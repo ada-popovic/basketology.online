@@ -1,0 +1,44 @@
+body {
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 height: 100vh;
+	 overflow: hidden;
+	 background-color: #592d04;
+}
+ div {
+	 margin: 0;
+	 font-family: sans-serif;
+	 font-size: 1.5vw;
+	 transform-style: preserve-3d;
+	 animation: spinning-circle 35s linear infinite;
+	 transform: rotate(80deg);
+   text-align: center;
+   white-space: nowrap;
+	 color: white;
+}
+ p {
+	 position: absolute;
+	 top: 50%;
+	 left: 50%;
+}
+ p:nth-child(1) {
+	 transform: translate(-50%, -50%) rotate(55deg) translateY(-200px) rotateX(90deg);
+}
+ p:nth-child(2) {
+	 transform: translate(-50%, -50%) rotate(140deg) translateY(-200px) rotateX(90deg);
+}
+ p:nth-child(3) {
+	 transform: translate(-50%, -50%) rotate(225deg) translateY(-200px) rotateX(90deg);
+}
+ p:nth-child(4) {
+	 transform: translate(-50%, -50%) rotate(310deg) translateY(-200px) rotateX(90deg);
+}
+ @keyframes spinning-circle {
+	 0% {
+		 transform: rotateX(-100deg) rotate(0);
+	}
+	 100% {
+		 transform: rotateX(-100deg) rotate(-360deg);
+	}
+}
