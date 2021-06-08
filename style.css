@@ -2,35 +2,51 @@
 :root {
   --brown: #5f3b23;
   --white: white;
-  --text: 'Replica';
-	--bold: 'Replica Bold';
-  --siggy: 'Siggy RJ';
+  --text: 'Replica Pro';
+	/* --bold: 'Replica Bold';
+	--bolditalic: 'Replica Bold'; */
+  --siggy: 'Siggy RJ numbers';
 }
 
 /* FONTS */
 @font-face {
-  font-family: 'Siggy RJ';
-    src:url('.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Siggy RJ numbers';
+    src: url('fonts/Siggy/SiggyRJ-Regular.woff2') format('woff2'),
+        url('fonts/Siggy/SiggyRJ-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: 'Replica Pro';
+    src: url('../fonts/Replica/ReplicaPro-Regular.woff2') format('woff2'),
+        url('../fonts/Replica/ReplicaPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'Replica';
-    src:url('.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Replica Pro';
+    src: url('../fonts/Replica/ReplicaPro-BoldItalic.woff2') format('woff2'),
+        url('../fonts/Replica/ReplicaPro-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
 }
 
 @font-face {
-  font-family: 'Replica Bold';
-    src:url('.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Replica Pro';
+    src: url('../fonts/Replica/ReplicaPro-Bold.woff2') format('woff2'),
+        url('../fonts/Replica/ReplicaPro-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
+
+
 
 /* BASICS */
 html, body {
@@ -66,10 +82,9 @@ body {
 
 /* TURNING TYPO */
 .turnaround {
-  margin: 0;
-  font-size: 1.5vw;
+  margin-left: -30px;
   transform-style: preserve-3d;
-  animation: spinning-circle 35s linear infinite;
+  animation: spinning-circle 20s linear infinite;
   transform: rotate(80deg);
   text-align: center;
   white-space: nowrap;
@@ -80,7 +95,7 @@ body {
 p:hover {
 	-webkit-filter: blur(0px);
 	text-shadow: 2px 2px 4px #000000;
-	font-size: 2vw;
+	/* font-size: 4.4vw; */
 }
 
 p {
@@ -88,25 +103,88 @@ p {
   position: absolute;
   top: 50%;
   left: 50%;
-  font-family: var(--bold), sans-serif;
+	font-family: 'Replica Pro', serif;
+	font-style: bold;
+	font-size: 2vw;
+	color: lime;
 	transition: 0.2s -webkit-filter linear, font-size 0.2s ease-out, text-shadow 0.2s linear;
+
 }
 
 p:nth-child(1) {
-  transform: translate(-50%, -50%) rotate(55deg) translateY(-200px) rotateX(90deg);
+  transform: translate(-50%, -50%) rotate(55deg) translateY(-230px) rotateX(90deg);
+	font-family: 'Siggy RJ numbers', serif;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: white;
+	font-size: 4vw;
+	text-shadow: 4px 4px 0 black;
 }
 
 p:nth-child(2) {
-  transform: translate(-50%, -50%) rotate(140deg) translateY(-200px) rotateX(90deg);
+  transform: translate(-50%, -50%) rotate(140deg) translateY(-230px) rotateX(90deg);
 }
 
 p:nth-child(3) {
-  transform: translate(-50%, -50%) rotate(225deg) translateY(-200px) rotateX(90deg);
+  transform: translate(-50%, -50%) rotate(225deg) translateY(-230px) rotateX(90deg);
 }
 
 p:nth-child(4) {
-  transform: translate(-50%, -50%) rotate(310deg) translateY(-200px) rotateX(90deg);
+  transform: translate(-50%, -50%) rotate(310deg) translateY(-230px) rotateX(90deg);
 }
+
+
+
+@media (max-width: 600px) {
+	#background-video {
+		position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100vw;
+	  height: 100vh;
+		transform: scale(4, 4);
+	}
+
+	p {
+		-webkit-filter: blur(0px);
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+		font-family: 'Replica Pro', serif;
+		font-style: bold;
+		font-size: 4vw;
+		color: lime;
+		transition: 0.2s -webkit-filter linear, font-size 0.2s ease-out, text-shadow 0.2s linear;
+
+	}
+
+	p:nth-child(1) {
+	  transform: translate(-50%, -50%) rotate(55deg) translateY(-110px) rotateX(90deg);
+		font-family: 'Siggy RJ numbers', serif;
+		-webkit-text-stroke-width: 1px;
+		-webkit-text-stroke-color: white;
+		font-size: 7vw;
+		text-shadow: 4px 4px 0 black;
+	}
+
+	p:nth-child(2) {
+	  transform: translate(-50%, -50%) rotate(140deg) translateY(-110px) rotateX(90deg);
+	}
+
+	p:nth-child(3) {
+	  transform: translate(-50%, -50%) rotate(225deg) translateY(-110px) rotateX(90deg);
+	}
+
+	p:nth-child(4) {
+	  transform: translate(-50%, -50%) rotate(310deg) translateY(-110px) rotateX(90deg);
+	}
+
+
+
+
+
+
+}
+
 
 @keyframes spinning-circle {
   0% {
