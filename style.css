@@ -94,18 +94,14 @@ body {
 }
 
 .about-button {
-  width: 10%;
-  height: 50px;
   right:0;
-  margin-right: 15%;
+  margin-right: 15vw;
 
 }
 
 .podcast-button {
-  width: 10%;
   right:0;
-  height: 50px;
-  margin-right: 3%;
+  margin-right: 3vw;
 }
 
 .text-about-button {

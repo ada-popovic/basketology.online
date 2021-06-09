@@ -1,8 +1,20 @@
 $(document).ready(function(){
+
+  // ANIMATE FLOATING STORIES
+
   animateDiv('.story-1');
   animateDiv('.story-2');
   animateDiv('.story-3');
   animateDiv('.story-4');
+
+  $('#stories-button').on('click', function() {
+      if ($('#stories-container').css('opacity') == 0) {
+          $('#stories-container').css('opacity', 1);
+      }
+      else {
+          $('#stories-container').css('opacity', 0);
+      }
+  });
 
 });
 
@@ -42,4 +54,16 @@ function calcSpeed(prev, next) {
 
     return speed;
 
+}
+
+
+// SHOW FLOATING STORIES
+
+function showStories() {
+  var x = document.getElementById('stories-container');
+  if (x.style.display === "none") {
+    x.style.display = "inline-block";
+  } else {
+    x.style.display = "none";
+  }
 }
