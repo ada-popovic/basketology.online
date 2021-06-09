@@ -58,7 +58,7 @@ body {
   height: 100%;
   text-decoration: none;
   overflow: hidden;
-  background-color: var(--brown);
+  background-color: lightgrey;
 }
 
 /* BACKGROUND VIDEO */
@@ -72,6 +72,7 @@ body {
   justify-content: center;
   align-items: center;
   -webkit-filter: blur(10px);
+  z-index: -100;
 }
 
 

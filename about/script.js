@@ -18,6 +18,8 @@ $(document).ready(function(){
 
 });
 
+
+
 function makeNewPosition(){
 
     // Get viewport dimensions (remove the dimension of the div)
