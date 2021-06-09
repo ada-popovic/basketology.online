@@ -7,7 +7,17 @@ $(document).ready(function(){
   animateDiv('.story-3');
   animateDiv('.story-4');
 
-  $('#stories-button').on("click touchstart", function() {
+  var eventname = 'click';
+  if ( ( 'ontouchstart' in window ) ||
+       ( navigator.maxTouchPoints > 0 ) ||
+       ( navigator.msMaxTouchPoints > 0 ) )
+        eventname = 'touchstart';
+
+
+    $('#stories-button').on( eventname, function( event ) {
+      //event.stopPropagation( );
+      console.log( event );
+
       if ($('#stories-container').css('opacity') == 0) {
           $('#stories-container').css('opacity', 1);
       }
@@ -20,11 +30,11 @@ $(document).ready(function(){
 
 
 
-function makeNewPosition(){
+function makeNewPosition(myclass){
 
     // Get viewport dimensions (remove the dimension of the div)
-    var h = $('#stories-container').height() - 50;
-    var w = $('#stories-container').width() - 50;
+    var h = $('#stories-container').height() - $(myclass).height();
+    var w = $('#stories-container').width() - $(myclass).width();
 
     var nh = Math.floor(Math.random() * h);
     var nw = Math.floor(Math.random() * w);
@@ -34,7 +44,7 @@ function makeNewPosition(){
 }
 
 function animateDiv(myclass){
-    var newq = makeNewPosition();
+    var newq = makeNewPosition(myclass);
     var oldq = $(myclass).offset();
     var speed = calcSpeed([oldq.top, oldq.left], newq);
     $(myclass).animate({ top: newq[0], left: newq[1] }, speed,   function(){
@@ -50,7 +60,7 @@ function calcSpeed(prev, next) {
 
     var greatest = x > y ? x : y;
 
-    var speedModifier = 0.1;
+    var speedModifier = 0.01;
 
     var speed = Math.ceil(greatest/speedModifier);
 
