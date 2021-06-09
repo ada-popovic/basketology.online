@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+alert( '***' );
   // ANIMATE FLOATING STORIES
 
   animateDiv('.story-1');
