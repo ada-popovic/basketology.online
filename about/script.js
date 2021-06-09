@@ -7,7 +7,7 @@ $(document).ready(function(){
   animateDiv('.story-3');
   animateDiv('.story-4');
 
-  $('#stories-button').on('click', function() {
+  $('#stories-button').on('click tap', function() {
       if ($('#stories-container').css('opacity') == 0) {
           $('#stories-container').css('opacity', 1);
       }
