@@ -1,6 +1,5 @@
 $(document).ready(function(){
-  alert( '///' );
-  
+
   // ANIMATE FLOATING STORIES
 
   animateDiv('.story-1');
@@ -15,8 +14,8 @@ $(document).ready(function(){
         eventname = 'touchstart';
 
 
-    //$('#stories-button').on( eventname, function( event ) {
-    $('#stories-button').on( 'click touchstart', function( event ) {
+    $('#stories-button').on( eventname, function( event ) {
+    // $('#stories-button').on( 'click touchstart', function( event ) {
 
       if ($('#stories-container').css('opacity') == 0) {
           $('#stories-container').css('opacity', 1);
