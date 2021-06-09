@@ -16,7 +16,7 @@ $(document).ready(function(){
 
     $('#stories-button').on( eventname, function( event ) {
       //event.stopPropagation( );
-      console.log( event );
+      alert( event.type );
 
       if ($('#stories-container').css('opacity') == 0) {
           $('#stories-container').css('opacity', 1);
