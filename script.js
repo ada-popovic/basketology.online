@@ -3,9 +3,9 @@ $(document).ready(function() {
   // ANIMATE FLOATING STORIES
 
   animateDiv('.story-1');
-  animateDiv('.story-2');
-  animateDiv('.story-3');
-  animateDiv('.story-4');
+  // animateDiv('.story-2');
+  // animateDiv('.story-3');
+  // animateDiv('.story-4');
 
   // fixing the touch event
   var eventname = 'click';
@@ -58,18 +58,6 @@ $(document).ready(function() {
 
   });
 
-  $('#podcast-button').on(eventname, function(event) {
-    if ($('#background-video').css('-webkit-filter') == 'blur(14px)') {
-      $('#background-video').css('-webkit-filter', 'blur(0px)');
-    }
-      else if ($('#background-video').css('-webkit-filter') == 'blur(15px)') {
-        $('#background-video').css('-webkit-filter', 'blur(14px)');
-      }
-      else {
-      $('#background-video').css('-webkit-filter', 'blur(14px)');
-    }
-
-  });
 
   $('#about-button').on(eventname, function(event) {
 
@@ -99,6 +87,23 @@ $(document).ready(function() {
 
 
   // CLICK STORIES
+
+  $('#stories-trigger').on(eventname, function(event) {
+
+    if ($('.story').css('display') == 'none') {
+      $('.story').css('display', 'inline-block');
+    } else {
+      $('.story').css('display', 'none');
+    }
+
+  });
+
+  $('#stories-trigger').on(eventname, function(event) {
+
+    $('.stories-container').css('pointer-events', 'auto');
+
+  });
+
 
   // CLICK FLOATING STORIES
 
@@ -154,13 +159,16 @@ $(document).ready(function() {
     }
   }
 
+  $('.story-1').on(eventname, function(event) {
+    $('.story-text-1').css('display', 'inline-block');
+    $('.story-background-1').css('width', '20vw');
+    $('.story-background-1').css('height', '20vw');
+    $('.story-background-1').css('border-radius', '0%');
+  });
+
   // ---------------------------
 
   // CLICK PODCAST
-  // $('#podcast-button').on(eventname, function(event) {
-  //   $('#background-video').css('-webkit-filter', 'blur(15px)');
-  //
-  // });
 
   $('#podcast-button').on(eventname, function(event) {
 
@@ -174,19 +182,32 @@ $(document).ready(function() {
 
   $('#podcast-button').on(eventname, function(event) {
 
-    if ($('#dropdown-podcast').css('display') == 'inline-block') {
-      $('#dropdown-podcast').css('display', 'none');
-    } else {
-      $('#dropdown-podcast').css('display', 'inline-block');
+    $('.about-section').css('display', 'none');
+    $('#about-button').css('-webkit-filter', 'blur(3px)');
+  });
+
+  $('#podcast-button').on(eventname, function(event) {
+    if ($('#background-video').css('-webkit-filter') == 'blur(14px)') {
+      $('#background-video').css('-webkit-filter', 'blur(0px)');
+    }
+      else if ($('#background-video').css('-webkit-filter') == 'blur(15px)') {
+        $('#background-video').css('-webkit-filter', 'blur(14px)');
+      }
+      else {
+      $('#background-video').css('-webkit-filter', 'blur(14px)');
     }
 
   });
 
   $('#podcast-button').on(eventname, function(event) {
 
-    $('.about-section').css('display', 'none');
-    $('#about-button').css('-webkit-filter', 'blur(3px)');
-  });
+   if ($('#dropdown-podcast').css('display') == 'inline-block') {
+     $('#dropdown-podcast').css('display', 'none');
+   } else {
+     $('#dropdown-podcast').css('display', 'inline-block');
+   }
+
+ });
 
 
 
@@ -199,6 +220,13 @@ $('.accordion').on(eventname, function(event) {
   } else {
     $('.accordion-content').css('display', 'none');
   }
+
+});
+
+$('.accordion').on(eventname, function(event) {
+
+  $('.accordion').css('background-color', 'var(--brown)');
+  $('.accordion').css('border', '3px solid var(--brown)');
 
 });
 
