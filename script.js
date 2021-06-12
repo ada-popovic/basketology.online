@@ -201,6 +201,24 @@ $('.accordion').on(eventname, function(event) {
 
 
 });
+
+$.fn.extend({
+  disableSelection : function() {
+    this.each(function() {
+      this.onselectstart = function() {
+        return false;
+      };
+      this.unselectable = "on";
+      $(this).css('-moz-user-select', 'none');
+      $(this).css('-webkit-user-select', 'none');
+    });
+  }
+});
+
+
+$(function() {
+  $(this).disableSelection();
+});
 // var acc = document.getElementsByClassName("accordion");
 // var i;
 //

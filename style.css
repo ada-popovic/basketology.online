@@ -1,7 +1,8 @@
 /* VARIABLES */
 :root {
-  --brown: #5f3b23;
+  --brown: #463718;
   --white: white;
+  --lightbrown: #9B8473;
   --text: 'Replica Pro';
   /* --bold: 'Replica Bold';
 	--bolditalic: 'Replica Bold'; */
@@ -203,22 +204,23 @@ body {
 #story-background {
   width: 10vw;
   height: 10vw;
-  background-color: lime;
+  background-color: var(--brown);
   -webkit-filter: blur(10px);
   border-radius: 50%;
-  -webkit-box-shadow: 0px 0px 5px 6px var(--brown);
+  -webkit-box-shadow: 0px 0px 50px 6px var(--lightbrown);
   /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow: 0px 0px 5px 6px var(--brown);
+  -moz-box-shadow: 0px 0px 50px 6px var(--lightbrown);
   /* Firefox 3.5 - 3.6 */
-  box-shadow: 0px 0px 5px 6px var(--brown);
+  box-shadow: 0px 0px 50px 6px var(--lightbrown);
 }
 
 #story-title {
-  color: var(--brown);
+  color: lime;
   font-size: 2em;
   font-family: var(--text);
   text-align: center;
   font-weight: bold;
+  text-shadow: 0 0 5px black;
 }
 
 /* PODCAST-ACCORDION */
