@@ -3,50 +3,47 @@
   --brown: #5f3b23;
   --white: white;
   --text: 'Replica Pro';
-	/* --bold: 'Replica Bold';
+  /* --bold: 'Replica Bold';
 	--bolditalic: 'Replica Bold'; */
   --siggy: 'Siggy RJ numbers';
 }
 
 /* FONTS */
 @font-face {
-    font-family: 'Siggy RJ numbers';
-    src: url('fonts/Siggy/SiggyRJ-Regular.woff2') format('woff2'),
-        url('fonts/Siggy/SiggyRJ-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-
-@font-face {
-    font-family: 'Replica Pro';
-    src: url('fonts/Replica/ReplicaPro-Regular.woff2') format('woff2'),
-        url('fonts/Replica/ReplicaPro-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Siggy RJ numbers';
+  src: url('fonts/Siggy/SiggyRJ-Regular.woff2') format('woff2'),
+    url('fonts/Siggy/SiggyRJ-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Replica Pro';
-    src: url('fonts/Replica/ReplicaPro-BoldItalic.woff2') format('woff2'),
-        url('fonts/Replica/ReplicaPro-BoldItalic.woff') format('woff');
-    font-weight: bold;
-    font-style: italic;
-    font-display: swap;
+  font-family: 'Replica Pro';
+  src: url('fonts/Replica/ReplicaPro-Regular.woff2') format('woff2'),
+    url('fonts/Replica/ReplicaPro-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Replica Pro';
-    src: url('fonts/Replica/ReplicaPro-Bold.woff2') format('woff2'),
-        url('fonts/Replica/ReplicaPro-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Replica Pro';
+  src: url('fonts/Replica/ReplicaPro-BoldItalic.woff2') format('woff2'),
+    url('fonts/Replica/ReplicaPro-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
 }
 
-
+@font-face {
+  font-family: 'Replica Pro';
+  src: url('fonts/Replica/ReplicaPro-Bold.woff2') format('woff2'),
+    url('fonts/Replica/ReplicaPro-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* BASICS */
 html, body {
@@ -58,12 +55,10 @@ body {
   width: 100%;
   height: 100%;
   text-decoration: none;
-  overflow: hidden;
-  background-color: var(--brown);
+  background-color: black;
 }
 
 /* BACKGROUND VIDEO */
-
 #background-video {
   position: fixed;
   right: 0;
@@ -72,14 +67,20 @@ body {
   min-height: 100%;
   justify-content: center;
   align-items: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  z-index: -100;
+  /* -webkit-filter: blur(5px); */
 }
 
-
+.blur {}
 
 /* NAVIGATION */
-
 .nav-button {
-  text-decoration: none!important;
+  text-decoration: none !important;
   display: inline;
   position: absolute;
   position: fixed;
@@ -90,162 +91,263 @@ body {
   height: 5%;
   float: right;
   margin: 2%;
+  z-index: 100;
+}
 
+.home-button {
+  text-decoration: none !important;
+  display: inline;
+  position: absolute;
+  position: fixed;
+  font-size: 3vw;
+  font-family: var(--siggy);
+  color: white;
+  -webkit-text-stroke: 1.5px white;
+  width: 10%;
+  height: 5%;
+  float: left;
+  margin-left: 3%;
+  margin-top: 1.5%;
+  z-index: 100;
+  cursor: pointer;
+  text-shadow: 0 0 5px black;
 }
 
 .about-button {
-  right:0;
+  right: 0;
   margin-right: 15vw;
-
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-filter: blur(3px);
 }
 
 .podcast-button {
-  right:0;
+  right: 0;
   margin-right: 3vw;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-filter: blur(3px);
 }
 
 .text-about-button {
-  text-decoration: none!important;
+  text-decoration: none !important;
   color: lime;
   font-weight: bold;
+  text-shadow: 0 0 7px black;
 }
 
 .text-podcast-button {
-  text-decoration: none!important;
+  text-decoration: none !important;
   color: lime;
+  font-weight: bold;
+  text-shadow: 0 0 7px black;
+}
+
+/* ABOUT-DESCRIPTION */
+
+.about-section{
+  display: none;
+}
+
+.description {
+  z-index: 10;
+  display: inline-block;
+  position: absolute;
+  width: 30%;
+  height: 80%;
+  margin-left: 3%;
+  margin-top: 8%;
+  color: var(--white);
+  font-size: 1.3em;
+  font-family: var(--text);
+  text-align: left;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* ABOUT-FLOATING STORIES */
+#story {
+  pointer-events: auto;
+  position: fixed;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+#stories-container {
+  z-index: 10;
+  position: fixed;
+  pointer-events: none;
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 90%;
+  height: 80%;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+#story-background {
+  width: 10vw;
+  height: 10vw;
+  background-color: lime;
+  -webkit-filter: blur(10px);
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 5px 6px var(--brown);
+  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 0px 0px 5px 6px var(--brown);
+  /* Firefox 3.5 - 3.6 */
+  box-shadow: 0px 0px 5px 6px var(--brown);
+}
+
+#story-title {
+  color: var(--brown);
+  font-size: 2em;
+  font-family: var(--text);
+  text-align: center;
   font-weight: bold;
 }
 
+/* PODCAST-ACCORDION */
+#dropdown-podcast {
+  display: none;
+  margin-top: 10%;
+  width: 50%;
+  height: 80%;
+  margin-left: 25%;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
 
+.accordion {
+  align-items: center;
+  margin-bottom: 1%;
+  border: 3px solid lime;
+  border-radius: 25px;
+  transition: 0.4s;
+  z-index: 90;
+  padding: 20px;
+}
 
-/* .blur {
-	-webkit-filter: blur(5px);
-	color: red;
-} */
-
-/* TURNING TYPO */
-/* .turnaround {
-  margin-left: -30px;
-  transform-style: preserve-3d;
-  animation: spinning-circle 20s linear infinite;
-  transform: rotate(80deg);
-  text-align: center;
-  white-space: nowrap;
+.accordion-title {
   color: var(--white);
+  font-size: 2.5em;
+  font-family: var(--text);
+  font-weight: bold;
+}
+
+.accordion-subtitle {
+  text-align: right;
+}
+
+.guest {
+  color: lime;
+  font-size: 2em;
+  font-family: var(--siggy);
+  text-align: right;
+  -webkit-text-stroke: 1.5px lime;
+}
+
+.with {
+  color: var(--white);
+  font-size: 1em;
+  font-family: var(--text);
+  text-align: right;
+}
+
+.accordion-content {
+  display: none;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.panel {
+  padding: 0;
+  background-color: var(--brown);
+  display: none;
+}
+
+/*
+.story-1{
+margin-left: 300px;
+margin-top: 400px;
 
 }
 
-p:hover {
-	-webkit-filter: blur(0px);
-	text-shadow: 2px 2px 4px #000000;
-}
-
-p {
-	-webkit-filter: blur(3px);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-	font-family: 'Replica Pro', serif;
-	font-style: bold;
-	font-size: 2vw;
-	color: lime;
-	transition: 0.2s -webkit-filter linear, font-size 0.2s ease-out, text-shadow 0.2s linear;
+.story-2{
+margin-left: 700px;
+margin-top: 200px;
 
 }
 
-p:nth-child(1) {
-  transform: translate(-50%, -50%) rotate(55deg) translateY(-230px) rotateX(90deg);
-	font-family: 'Siggy RJ numbers', serif;
-	-webkit-text-stroke-width: 2px;
-	-webkit-text-stroke-color: white;
-	font-size: 4vw;
-	text-shadow: 4px 4px 0 black;
+.story-1{
+margin-left: 300px;
+margin-top: 400px;
+
 }
 
-p:nth-child(2) {
-  transform: translate(-50%, -50%) rotate(140deg) translateY(-230px) rotateX(90deg);
-}
+.story-1{
+margin-left: 300px;
+margin-top: 400px;
 
-p:nth-child(3) {
-  transform: translate(-50%, -50%) rotate(225deg) translateY(-230px) rotateX(90deg);
-}
-
-p:nth-child(4) {
-  transform: translate(-50%, -50%) rotate(310deg) translateY(-230px) rotateX(90deg);
 } */
-
-
-
 @media (max-width: 1400px) {
+  #background-video {
+    position: fixed;
+    top: 0;
+    margin-left: 300PX;
+    width: 100vw;
+    height: 100vh;
+    transform: scale(3, 3);
+  }
 
-	#background-video {
-		position: fixed;
-	  top: 0;
-	  margin-left: 300PX;
-	  width: 100vw;
-	  height: 100vh;
-		transform: scale(3, 3);
-	}
+  .nav-button {
+    font-size: 4vw;
+  }
+
+  .home-button {
+    font-size: 5vw;
+  }
+
+  .about-button {
+    margin-right: 30vw;
+  }
+
+  .podcast-button {
+    margin-right: 13vw;
+  }
+
+  .description {
+    width: 60%;
+    font-size: 2em;
+  }
 
   @media (max-width: 800px) {
-
-  	#background-video {
-  		position: fixed;
-  	  top: 0;
-  	  margin-left: 300PX;
-  	  width: 100vw;
-  	  height: 100vh;
-  		transform: scale(4, 4);
-  	}
-/*
-	p {
-		-webkit-filter: blur(0px);
-	  position: absolute;
-	  top: 50%;
-	  left: 50%;
-		font-family: 'Replica Pro', serif;
-		font-style: bold;
-		font-size: 4vw;
-		color: lime;
-		transition: 0.2s -webkit-filter linear, font-size 0.2s ease-out, text-shadow 0.2s linear;
-
-	}
-
-	p:nth-child(1) {
-	  transform: translate(-50%, -50%) rotate(55deg) translateY(-110px) rotateX(90deg);
-		font-family: 'Siggy RJ numbers', serif;
-		-webkit-text-stroke-width: 1px;
-		-webkit-text-stroke-color: white;
-		font-size: 7vw;
-		text-shadow: 4px 4px 0 black;
-	}
-
-	p:nth-child(2) {
-	  transform: translate(-50%, -50%) rotate(140deg) translateY(-110px) rotateX(90deg);
-	}
-
-	p:nth-child(3) {
-	  transform: translate(-50%, -50%) rotate(225deg) translateY(-110px) rotateX(90deg);
-	}
-
-	p:nth-child(4) {
-	  transform: translate(-50%, -50%) rotate(310deg) translateY(-110px) rotateX(90deg);
-	} */
-
-
-
-
-
-
-}
-
-
-@keyframes spinning-circle {
-  0% {
-    transform: rotateX(-100deg) rotate(0);
-  }
-
-  100% {
-    transform: rotateX(-100deg) rotate(-360deg);
-  }
-}
+    #background-video {
+      position: fixed;
+      top: 0;
+      margin-left: 300px;
+      width: 100vw;
+      height: 100vh;
+      transform: scale(4, 4);
+    }
