@@ -19,21 +19,12 @@ $(document).ready(function() {
 
   $('#home-button').on(eventname, function(event) {
 
-    if ($('#background-video').css('-webkit-filter') == 'blur(15px)') {
-      $('#background-video').css('-webkit-filter', 'blur(0px)');
-    } else {
-      $('#background-video').css('-webkit-filter', 'blur(0px)');
-    }
-
-  });
-
-  $('#home-button').on(eventname, function(event) {
-
     $('#about-button').css('-webkit-filter', 'blur(3px)');
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
     $('.about-section').css('display', 'none');
     $('.podcast-section').css('display', 'none');
     $('.accordion-content').css('display', 'none');
+    $('#background-video').css('-webkit-filter', 'blur(0px)');
 
   });
 
@@ -55,7 +46,28 @@ $(document).ready(function() {
 
   // CLICK ABOUT
   $('#about-button').on(eventname, function(event) {
-    $('#background-video').css('-webkit-filter', 'blur(15px)');
+    if ($('#background-video').css('-webkit-filter') == 'blur(15px)') {
+      $('#background-video').css('-webkit-filter', 'blur(0px)');
+    }
+      else if ($('#background-video').css('-webkit-filter') == 'blur(14px)') {
+        $('#background-video').css('-webkit-filter', 'blur(15px)');
+      }
+      else {
+      $('#background-video').css('-webkit-filter', 'blur(15px)');
+    }
+
+  });
+
+  $('#podcast-button').on(eventname, function(event) {
+    if ($('#background-video').css('-webkit-filter') == 'blur(14px)') {
+      $('#background-video').css('-webkit-filter', 'blur(0px)');
+    }
+      else if ($('#background-video').css('-webkit-filter') == 'blur(15px)') {
+        $('#background-video').css('-webkit-filter', 'blur(14px)');
+      }
+      else {
+      $('#background-video').css('-webkit-filter', 'blur(14px)');
+    }
 
   });
 
@@ -145,10 +157,10 @@ $(document).ready(function() {
   // ---------------------------
 
   // CLICK PODCAST
-  $('#podcast-button').on(eventname, function(event) {
-    $('#background-video').css('-webkit-filter', 'blur(15px)');
-
-  });
+  // $('#podcast-button').on(eventname, function(event) {
+  //   $('#background-video').css('-webkit-filter', 'blur(15px)');
+  //
+  // });
 
   $('#podcast-button').on(eventname, function(event) {
 
