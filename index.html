@@ -14,9 +14,12 @@
   <link href="" rel="stylesheet">
   <meta name="description" content="To come">
 
+<div id="video-container" class="video-container">
   <video autoplay muted loop id="background-video" class="background-video">
     <source src="images/basket_weave.mp4" type="video/mp4">
   </video>
+</div>
+
 
   <!-- HOMEPAGE -->
   <div id="home-button" class='home-button'>
@@ -67,7 +70,7 @@
         </div>
       </div>
 
-      <!-- <div id="story" class='story story-2'>
+      <div id="story" class='story story-2'>
         <div id="story-title" class='story-title-2'>TITLE 2</div>
         <div id="story-background" class='story-background-2'></div>
 
@@ -83,7 +86,7 @@
         <div id="story-title" class='story-title-4'>TITLE 4</div>
         <div id="story-background" class='story-background-4'></div>
 
-      </div> -->
+      </div>
 
 
     </div>
@@ -93,7 +96,92 @@
   <div id="dropdown-podcast" class="dropdown-podcast podcast-section">
     <div class="accordion">
       <div class="accordion-audio-player">
-        PRESS PLAY
+
+
+
+
+
+
+
+    <!-- AUDIO PLAYER 1-->
+    <!-- <canvas id="progress" width="500" height="100"></canvas>
+    <audio id="audio" ontimeupdate="updateBar()"
+           src="audio/intro.mp3">
+    </audio>
+    <br>
+    <span id="current-time"></span> /
+    <span id="duration"></span>
+    <br>
+    <button id="audioControl" onclick="togglePlaying()">Play</button> -->
+
+      <!-- AUDIO PLAYER 2-->
+
+      <!-- <div class="container">
+  <div class="progress" id="progress"></div>
+  <audio id="audio" src="audio/intro.mp3"></audio>
+  <button class="togglePlay" onClick="togglePlay()">Play/Pause</button>
+</div> -->
+
+    <!-- AUDIO PLAYER 3-->
+
+    <!-- <div style="width: 50px; height: 50px;"></div>
+    <div class="audio-player">
+      <div class="timeline">
+        <div class="progress"></div>
+      </div>
+      <div class="controls">
+        <div class="play-container">
+          <div class="toggle-play play">
+        </div>
+        </div>
+        <div class="time">
+          <div class="current">0:00</div>
+          <div class="divider">/</div>
+          <div class="length"></div>
+        </div>
+
+        <div class="volume-container">
+          <div class="volume-button">
+            <div class="volume icono-volumeMedium"></div>
+          </div>
+
+          <div class="volume-slider">
+            <div class="volume-percentage"></div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+
+    <!-- <audio id="music" controls="controls">
+      <source src="audio/intro.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="pButton" class="play" onclick="playAudio()"></button> -->
+
+    <audio id="player" src="audio/intro.mp3"></audio>
+<div>
+  <button onclick="document.getElementById('player').play()">Play</button>
+  <button onclick="document.getElementById('player').pause()">Pause</button>
+  <!-- <button onclick="document.getElementById('player').volume += 0.1">Vol +</button>
+  <button onclick="document.getElementById('player').volume -= 0.1">Vol -</button> -->
+</div>
+
+
+    <!-- <div id="audio-player-container">
+        <audio src="" preload="metadata" loop></audio>
+
+        <button id="play-icon"></button>
+        <span id="current-time" class="time">0:00</span>
+        <input type="range" id="seek-slider" max="100" value="0">
+        <span id="duration" class="time">0:00</span>
+
+        <button id="mute-icon"></button>
+        <audio-player data-src="audio/intro.mp3"></audio-player>
+    </div> -->
+
+
 
       </div>
       <div class="accordion-title">
@@ -135,7 +223,7 @@
 
 
 
-  
+
 
   <script src="script.js"></script>
   </body>
