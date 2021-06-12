@@ -306,6 +306,8 @@ body {
 }
 
 .accordion-content {
+  margin-top: 5%;
+  width:100%;
   display: none;
   color: var(--white);
   -webkit-transition: all 0.5s ease-in-out;
@@ -313,6 +315,30 @@ body {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
+}
+
+.column {
+}
+
+.left {
+  float: left;
+  width: 45%;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.right {
+  float: right;
+  width: 45%;
+}
+
+.basket-drawing{
+  position: absolute;
+  display: inline-block;
+}
+
+.basket-drawing img{
+  width: 30%;
 }
 
 .panel {
