@@ -269,6 +269,39 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
+.podcast-buttons > .play-button , 
+.podcast-buttons > .pause-button{
+  display: none;
+  fill : lime;
+  height: 50px;
+  width: 100%;
+}
+
+.elapsed-time {
+  font-family: var(--text);
+  color: #fff;
+}
+
+.podcast-buttons > .play-button.active, 
+.podcast-buttons > .pause-button.active {
+  display: block;
+}
+
+.playhead-container {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  background: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.playhead {
+  display: inline-block;
+  width: 0%;
+  height: 100%;
+  background: lime;
+}
 /* AUDIO PLAYER */
 
 

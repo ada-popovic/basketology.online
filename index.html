@@ -14,11 +14,11 @@
   <link href="" rel="stylesheet">
   <meta name="description" content="To come">
 
-<div id="video-container" class="video-container">
-  <video autoplay muted loop id="background-video" class="background-video">
-    <source src="images/basket_weave.mp4" type="video/mp4">
-  </video>
-</div>
+  <div id="video-container" class="video-container">
+    <video autoplay muted loop id="background-video" class="background-video">
+      <source src="images/basket_weave.mp4" type="video/mp4">
+    </video>
+  </div>
 
 
   <!-- HOMEPAGE -->
@@ -47,12 +47,18 @@
   <div class='about-section'>
     <div id="description" class='description'>
 
-      In <span id="stories-trigger" style="cursor: pointer; color:lime;">*The Carrier Bag Theory of Fiction*</span> (1986), author Ursula K. Le Guin suggests that the first defining cultural device of humanity wasn't a spear but a basket. The spear
-      retained its primary reputation due to the rhetoric of storytelling—it is easier to tell a story of a singular hero killing a mammoth than a collective effort of fruit-picking. Today, the spear manifests itself through colonial, binary and
+      In <span id="stories-trigger" style="cursor: pointer; color:lime;">*The Carrier Bag Theory of Fiction*</span>
+      (1986), author Ursula K. Le Guin suggests that the first defining cultural device of humanity wasn't a spear but a
+      basket. The spear
+      retained its primary reputation due to the rhetoric of storytelling—it is easier to tell a story of a singular
+      hero killing a mammoth than a collective effort of fruit-picking. Today, the spear manifests itself through
+      colonial, binary and
       patriarchal narratives.
       </br>
       </br>
-      Basketology is a philosophy for alternative storytelling. Through an online podcast platform featuring interviews with a variety of basket-minded people the project explores how the physical attributes and cultural associations of a basket can
+      Basketology is a philosophy for alternative storytelling. Through an online podcast platform featuring interviews
+      with a variety of basket-minded people the project explores how the physical attributes and cultural associations
+      of a basket can
       be
       used as a metaphorical guide for looking at our socio-political landscape and defining ourselves within it.
     </div>
@@ -66,7 +72,8 @@
         <div id="story-content" class='story-content'>
 
           <div id="story-background" class='story-background-1'></div>
-          <div id="story-text" class='story-text story-text-1'>used as a metaphorical guide for looking at our socio-political landscape and defining ourselves within it.</div>
+          <div id="story-text" class='story-text story-text-1'>used as a metaphorical guide for looking at our
+            socio-political landscape and defining ourselves within it.</div>
         </div>
       </div>
 
@@ -94,95 +101,30 @@
 
   <!-- PODCAST-ACCORDION -->
   <div id="dropdown-podcast" class="dropdown-podcast podcast-section">
-    <div class="accordion">
+    <div class="accordion podcast1">
       <div class="accordion-audio-player">
+        <audio class="audio" src="./audio/intro.mp3"></audio>
+        <div class="player">
+          <span class="elapsed-time">0:00</span>
+          <div class="playhead-container">
+            <span class="playhead"></span>
 
-
-
-
-
-
-
-    <!-- AUDIO PLAYER 1-->
-    <!-- <canvas id="progress" width="500" height="100"></canvas>
-    <audio id="audio" ontimeupdate="updateBar()"
-           src="audio/intro.mp3">
-    </audio>
-    <br>
-    <span id="current-time"></span> /
-    <span id="duration"></span>
-    <br>
-    <button id="audioControl" onclick="togglePlaying()">Play</button> -->
-
-      <!-- AUDIO PLAYER 2-->
-
-      <!-- <div class="container">
-  <div class="progress" id="progress"></div>
-  <audio id="audio" src="audio/intro.mp3"></audio>
-  <button class="togglePlay" onClick="togglePlay()">Play/Pause</button>
-</div> -->
-
-    <!-- AUDIO PLAYER 3-->
-
-    <!-- <div style="width: 50px; height: 50px;"></div>
-    <div class="audio-player">
-      <div class="timeline">
-        <div class="progress"></div>
-      </div>
-      <div class="controls">
-        <div class="play-container">
-          <div class="toggle-play play">
-        </div>
-        </div>
-        <div class="time">
-          <div class="current">0:00</div>
-          <div class="divider">/</div>
-          <div class="length"></div>
-        </div>
-
-        <div class="volume-container">
-          <div class="volume-button">
-            <div class="volume icono-volumeMedium"></div>
-          </div>
-
-          <div class="volume-slider">
-            <div class="volume-percentage"></div>
           </div>
         </div>
-      </div>
-    </div> -->
+        <div class="podcast-buttons">
+          <svg class="pause-button" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56.7 56.7"
+            style="enable-background:new 0 0 56.7 56.7;" xml:space="preserve">
+            <rect x="8.9" y="7" width="10.4" height="45.2" />
+            <rect x="36.3" y="7" width="10.4" height="45.2" />
+          </svg>
+          <svg class="play-button active" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56.7 56.7"
+            style="enable-background:new 0 0 56.7 56.7;" xml:space="preserve">
+            <polygon points="8.9,3.7 8.9,53 50.7,28.6 " />
+          </svg>
 
-
-
-    <!-- <audio id="music" controls="controls">
-      <source src="audio/intro.mp3" type="audio/mpeg">
-    </audio>
-
-    <button id="pButton" class="play" onclick="playAudio()"></button> -->
-
-    <audio id="player" src="audio/intro.mp3"></audio>
-<div>
-  <button onclick="document.getElementById('player').play()">Play</button>
-  <button onclick="document.getElementById('player').pause()">Pause</button>
-  <!-- <button onclick="document.getElementById('player').volume += 0.1">Vol +</button>
-  <button onclick="document.getElementById('player').volume -= 0.1">Vol -</button> -->
-</div>
-
-
-    <!-- <div id="audio-player-container">
-        <audio src="" preload="metadata" loop></audio>
-
-        <button id="play-icon"></button>
-        <span id="current-time" class="time">0:00</span>
-        <input type="range" id="seek-slider" max="100" value="0">
-        <span id="duration" class="time">0:00</span>
-
-        <button id="mute-icon"></button>
-        <audio-player data-src="audio/intro.mp3"></audio-player>
-    </div> -->
-
-
-
+        </div>
       </div>
       <div class="accordion-title">
         Questioning The Canon
@@ -194,36 +136,80 @@
       <div class="accordion-content">
 
         <div class="column left">
-          <div class="basket-drawing" >
+          <div class="basket-drawing">
             <img src="images/basket_drawing.png"></img>
             <p>Louise's drawing of a basket</p>
           </div>
 
         </div>
         <div class="column right">
-          <p>When one thinks about an archive there is a rather clear image that comes to mind. An acclaimed institution and its board of experts make curatorial choices about which histories are worth recording and which ones should be discarded. A small group of specialised people make daily decisions about objects, documents and stories that contribute to the canon and the narratives resulting from it. But in the digital age, perhaps more than ever, we can open up the archive. In today’s episode I am joined by Louise Sandhaus—a graphic designer, former Program Director and current faculty member of the Graphic Design Program at the California Institute of the Arts. In 2018 she started The People’s Graphic Design Archive—an initiative that through open-call and open-source structure tries to write a more plural, inclusive and open history of design. A virtual archive built by everyone, about everyone and for everyone. Open, plural and receptive—just like a basket.</p>
+          <p>When one thinks about an archive there is a rather clear image that comes to mind. An acclaimed institution
+            and its board of experts make curatorial choices about which histories are worth recording and which ones
+            should be discarded. A small group of specialised people make daily decisions about objects, documents and
+            stories that contribute to the canon and the narratives resulting from it. But in the digital age, perhaps
+            more than ever, we can open up the archive. In today’s episode I am joined by Louise Sandhaus—a graphic
+            designer, former Program Director and current faculty member of the Graphic Design Program at the California
+            Institute of the Arts. In 2018 she started The People’s Graphic Design Archive—an initiative that through
+            open-call and open-source structure tries to write a more plural, inclusive and open history of design. A
+            virtual archive built by everyone, about everyone and for everyone. Open, plural and receptive—just like a
+            basket.</p>
         </div>
       </div>
+    </div>
+    <div class="accordion podcast2">
+      <div class="accordion-audio-player">
+        <audio class="audio" src="./audio/intro.mp3"></audio>
+        <div class="player">
+          <span id="elapsed-time" class="elapsed-time">0:00</span>
+          <span class="playhead"></span>
+        </div>
+        <div class="podcast-buttons">
+          <svg class="pause-button" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56.7 56.7"
+            style="enable-background:new 0 0 56.7 56.7;" xml:space="preserve">
+            <rect x="8.9" y="7" width="10.4" height="45.2" />
+            <rect x="36.3" y="7" width="10.4" height="45.2" />
+          </svg>
+          <svg class="play-button active" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 56.7 56.7"
+            style="enable-background:new 0 0 56.7 56.7;" xml:space="preserve">
+            <polygon points="8.9,3.7 8.9,53 50.7,28.6 " />
+          </svg>
+        </div>
+      </div>
+      <div class="accordion-title">
+        Questioning The Canon
+      </div>
+      <div class="accordion-subtitle">
+        <span class="with">with</span> <span class="guest">LOUISE SANDHAUS</span>
+      </div>
 
+      <div class="accordion-content">
+
+        <div class="column left">
+          <div class="basket-drawing">
+            <img src="images/basket_drawing.png"></img>
+            <p>Louise's drawing of a basket</p>
+          </div>
+
+        </div>
+        <div class="column right">
+          <p>When one thinks about an archive there is a rather clear image that comes to mind. An acclaimed institution
+            and its board of experts make curatorial choices about which histories are worth recording and which ones
+            should be discarded. A small group of specialised people make daily decisions about objects, documents and
+            stories that contribute to the canon and the narratives resulting from it. But in the digital age, perhaps
+            more than ever, we can open up the archive. In today’s episode I am joined by Louise Sandhaus—a graphic
+            designer, former Program Director and current faculty member of the Graphic Design Program at the California
+            Institute of the Arts. In 2018 she started The People’s Graphic Design Archive—an initiative that through
+            open-call and open-source structure tries to write a more plural, inclusive and open history of design. A
+            virtual archive built by everyone, about everyone and for everyone. Open, plural and receptive—just like a
+            basket.</p>
+        </div>
+      </div>
     </div>
 
+
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   <script src="script.js"></script>
   </body>
