@@ -1,18 +1,35 @@
-$(document).ready(function () {
+$( document ).ready(function () {
 
   // ANIMATE FLOATING STORIES
+  for ( var i=1; i<=4; i++ ) {
+	  var story = '.story-' + i;
 
-  animateDiv('.story-1');
-  animateDiv('.story-2');
-  animateDiv('.story-3');
-  animateDiv('.story-4');
+	  var pos = makeNewPosition( story );
+	  $( story ).css( { 'top': pos[ 0 ] + 'px',
+	  					'left': pos[ 1 ] + 'px' } );
+
+	  animateDiv( story );
+  }
+
+  function closeStories( ) {
+	$( '#stories-container' ).css( 'opacity', '0' );
+	$( '#stories-container > div' ).css( { 'opacity': '0', 'pointer-events': 'none' } );
+
+	$( '#story-background' ).css( { 'width': 0, 'height': 0,
+									'padding': '5vw',
+									'border-radius': '50%' } );
+
+	$( '#story-title' ).css( 'top', 'calc(-1.5em - 5vw)' );
+	$( '#story-text' ).css( 'opacity', 0 );
+  }
 
   // fixing the touch event
   var eventname = 'click';
-  if (('ontouchstart' in window) ||
-    (navigator.maxTouchPoints > 0) ||
-    (navigator.msMaxTouchPoints > 0))
-    eventname = 'touchstart';
+  if ( ( 'ontouchstart' in window ) ||
+       ( navigator.maxTouchPoints > 0 ) || ( navigator.msMaxTouchPoints > 0 ) )
+		    eventname = 'touchstart';
+
+
 
 
   // CLICK HOMEPAGE
@@ -21,27 +38,28 @@ $(document).ready(function () {
 
     $('#about-button').css('-webkit-filter', 'blur(3px)');
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
-    $('.about-section').css('display', 'none');
+    $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
+    					 //('display', 'none');
     $('.podcast-section').css('display', 'none');
     $('.accordion-content').css('display', 'none');
     $('#background-video').css('-webkit-filter', 'blur(0px)');
 
+	closeStories( );
   });
 
   // CLICK BACKGROUND
 
   $('#background-video').on(eventname, function (event) {
     $('#background-video').css('-webkit-filter', 'blur(0px)');
-  });
-
-  $('#background-video').on(eventname, function (event) {
 
     $('#about-button').css('-webkit-filter', 'blur(3px)');
+    $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
+
+    closeStories( );
+
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
-    $('.about-section').css('display', 'none');
     $('.podcast-section').css('display', 'none');
     $('.accordion-content').css('display', 'none');
-
   });
 
   // CLICK ABOUT
@@ -56,31 +74,20 @@ $(document).ready(function () {
       $('#background-video').css('-webkit-filter', 'blur(15px)');
     }
 
-  });
-
-
-  $('#about-button').on(eventname, function (event) {
-
     if ($('#about-button').css('-webkit-filter') == 'blur(3px)') {
       $('#about-button').css('-webkit-filter', 'blur(0px)');
     } else {
       $('#about-button').css('-webkit-filter', 'blur(3px)');
     }
 
-  });
-
-  $('#about-button').on(eventname, function (event) {
-
     $('#dropdown-podcast').css('display', 'none');
+
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
-  });
 
-  $('#about-button').on(eventname, function (event) {
-
-    if ($('.about-section').css('display') == 'inline-block') {
-      $('.about-section').css('display', 'none');
+    if ($('.about-section').css('opacity') == 1) {
+      $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
     } else {
-      $('.about-section').css('display', 'inline-block');
+      $('.about-section').css( { 'opacity': 1, 'pointer-events': 'all' } );
     }
 
   });
@@ -90,44 +97,42 @@ $(document).ready(function () {
 
   $('#stories-trigger').on(eventname, function (event) {
 
-    if ($('.story').css('display') == 'none') {
-      $('.story').css('display', 'inline-block');
+    if ($('.story').css('opacity') == 0) {
+      $('.story').css('opacity', 1);
     } else {
-      $('.story').css('display', 'none');
+      $('.story').css('opacity', 0);
     }
 
-  });
-
-  $('#stories-trigger').on(eventname, function (event) {
-
-    $('.stories-container').css('pointer-events', 'auto');
-
+    $( '#stories-container' ).css( 'opacity', '1' );
+    $( '#stories-container > div' ).css( { 'opacity': '1', 'pointer-events': 'all' } );
   });
 
 
   // CLICK FLOATING STORIES
 
-  function makeNewPosition(myclass) {
+  function makeNewPosition( myclass ) {
+	var story = $( myclass + ' #story-background' );
 
-    var h = $('#stories-container').height() - $(myclass).height();
-    var w = $('#stories-container').width() - $(myclass).width();
+    var h = $( '#stories-container' ).height( ) - story.height( );
+    var w = $( '#stories-container' ).width( ) - story.width( );
 
-    var nh = Math.floor(Math.random() * h);
-    var nw = Math.floor(Math.random() * w);
+    var nh = story.height( ) / 2 + Math.floor(Math.random() * h);
+    var nw = story.width( ) / 2 + Math.floor(Math.random() * w);
 
-    return [nh, nw];
+    return [ nh, nw ];
 
   }
 
-  function animateDiv(myclass) {
-    var newq = makeNewPosition(myclass);
+  function animateDiv( myclass ) {
+    var newq = makeNewPosition( myclass );
     var oldq = $(myclass).offset();
-    var speed = calcSpeed([oldq.top, oldq.left], newq);
-    $(myclass).animate({
-      top: newq[0],
-      left: newq[1]
-    }, speed, function () {
-      animateDiv(myclass);
+    var speed = calcSpeed( [ oldq.top, oldq.left ], newq );
+
+    $( myclass ).animate( {
+      top: newq[ 0 ],
+      left: newq[ 1 ]
+    }, speed, function( ) {
+      animateDiv( myclass );
     });
 
   };
@@ -160,11 +165,25 @@ $(document).ready(function () {
   }
 
   $('.story-1').on(eventname, function (event) {
-    $('.story-text-1').css('display', 'inline-block');
-    $('.story-background-1').css('width', '20vw');
-    $('.story-background-1').css('height', '20vw');
-    $('.story-background-1').css('border-radius', '0%');
-  });
+  	$( this ).css( 'z-index', '+1' );
+
+  	$('.story-text-1').css( 'display', 'inline-block' );
+
+  	var boxtext = $( '.story-text-1' );
+  	var boxheight = boxtext.outerHeight( );
+
+    $('.story-background-1').css( { 'width': '30vw',
+    								'height': boxheight + 'px',
+    								'padding': '0',
+									'border-radius': '0' } );
+
+
+    $('.story-title-1').css( 'top', 'calc(-1.5em - ' + ( boxheight / 2 ) + 'px)' );
+
+    setTimeout( function( ) {
+		$('.story-text-1').css( 'opacity', '1' );
+    }, 500 );
+  } );
 
   // ---------------------------
 
@@ -178,16 +197,13 @@ $(document).ready(function () {
       $('#podcast-button').css('-webkit-filter', 'blur(3px)');
     }
 
+    $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
+//    $( '#stories-container' ).css( 'pointer-events', 'none' );
 
-  });
+    closeStories( );
 
-  $('#podcast-button').on(eventname, function (event) {
-
-    $('.about-section').css('display', 'none');
     $('#about-button').css('-webkit-filter', 'blur(3px)');
-  });
 
-  $('#podcast-button').on(eventname, function (event) {
     if ($('#background-video').css('-webkit-filter') == 'blur(14px)') {
       $('#background-video').css('-webkit-filter', 'blur(0px)');
     }
@@ -198,17 +214,12 @@ $(document).ready(function () {
       $('#background-video').css('-webkit-filter', 'blur(14px)');
     }
 
-  });
-
-  $('#podcast-button').on(eventname, function (event) {
-
     if ($('#dropdown-podcast').css('display') == 'inline-block') {
       $('#dropdown-podcast').css('display', 'none');
     } else {
       $('#dropdown-podcast').css('display', 'inline-block');
     }
-
-  });
+  } );
 
 
 
@@ -221,10 +232,6 @@ $(document).ready(function () {
     } else {
       $('.accordion-content').css('display', 'none');
     }
-
-  });
-
-  $('.accordion').on(eventname, function (event) {
 
     $('.accordion').css('background-color', 'var(--brown)');
     $('.accordion').css('border', '3px solid var(--brown)');
@@ -300,19 +307,3 @@ $.fn.extend({
 $(function () {
   $(this).disableSelection();
 });
-// var acc = document.getElementsByClassName("accordion");
-// var i;
-//
-// for (i = 0; i < acc.length; i++) {
-//   acc[i].addEventListener("click", function() {
-//
-//     this.classList.toggle("active");
-//
-//     var panel = this.nextElementSibling;
-//     if (panel.style.display === "block") {
-//       panel.style.display = "none";
-//     } else {
-//       panel.style.display = "block";
-//     }
-//   });
-// }
