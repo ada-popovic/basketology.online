@@ -1,33 +1,37 @@
-$( document ).ready(function () {
+$(document).ready(function () {
 
   // ANIMATE FLOATING STORIES
-  for ( var i=1; i<=4; i++ ) {
-	  var story = '.story-' + i;
+  for (var i = 1; i <= 4; i++) {
+    var story = '.story-' + i;
 
-	  var pos = makeNewPosition( story );
-	  $( story ).css( { 'top': pos[ 0 ] + 'px',
-	  					'left': pos[ 1 ] + 'px' } );
+    var pos = makeNewPosition(story);
+    $(story).css({
+      'top': pos[0] + 'px',
+      'left': pos[1] + 'px'
+    });
 
-	  animateDiv( story );
+    animateDiv(story);
   }
 
-  function closeStories( ) {
-	$( '#stories-container' ).css( 'opacity', '0' );
-	$( '#stories-container > div' ).css( { 'opacity': '0', 'pointer-events': 'none' } );
+  function closeStories() {
+    $('#stories-container').css('opacity', '0');
+    $('#stories-container > div').css({ 'opacity': '0', 'pointer-events': 'none' });
 
-	$( '#story-background' ).css( { 'width': 0, 'height': 0,
-									'padding': '5vw',
-									'border-radius': '50%' } );
+    $('#story-background').css({
+      'width': 0, 'height': 0,
+      'padding': '5vw',
+      'border-radius': '50%'
+    });
 
-	$( '#story-title' ).css( 'top', 'calc(-1.5em - 5vw)' );
-	$( '#story-text' ).css( 'opacity', 0 );
+    $('#story-title').css('top', 'calc(-1.5em - 5vw)');
+    $('#story-text').css('opacity', 0);
   }
 
   // fixing the touch event
   var eventname = 'click';
-  if ( ( 'ontouchstart' in window ) ||
-       ( navigator.maxTouchPoints > 0 ) || ( navigator.msMaxTouchPoints > 0 ) )
-		    eventname = 'touchstart';
+  if (('ontouchstart' in window) ||
+    (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0))
+    eventname = 'touchstart';
 
 
 
@@ -38,13 +42,13 @@ $( document ).ready(function () {
 
     $('#about-button').css('-webkit-filter', 'blur(3px)');
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
-    $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
-    					 //('display', 'none');
+    $('.about-section').css({ 'opacity': 0, 'pointer-events': 'none' });
+    //('display', 'none');
     $('.podcast-section').css('display', 'none');
     $('.accordion-content').css('display', 'none');
     $('#background-video').css('-webkit-filter', 'blur(0px)');
 
-	closeStories( );
+    closeStories();
   });
 
   // CLICK BACKGROUND
@@ -53,9 +57,9 @@ $( document ).ready(function () {
     $('#background-video').css('-webkit-filter', 'blur(0px)');
 
     $('#about-button').css('-webkit-filter', 'blur(3px)');
-    $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
+    $('.about-section').css({ 'opacity': 0, 'pointer-events': 'none' });
 
-    closeStories( );
+    closeStories();
 
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
     $('.podcast-section').css('display', 'none');
@@ -85,9 +89,10 @@ $( document ).ready(function () {
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
 
     if ($('.about-section').css('opacity') == 1) {
-      $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
+      $('.about-section').css({ 'opacity': 0, 'pointer-events': 'none' });
+      closeStories();
     } else {
-      $('.about-section').css( { 'opacity': 1, 'pointer-events': 'all' } );
+      $('.about-section').css({ 'opacity': 1, 'pointer-events': 'all' });
     }
 
   });
@@ -96,43 +101,42 @@ $( document ).ready(function () {
   // CLICK STORIES
 
   $('#stories-trigger').on(eventname, function (event) {
-
     if ($('.story').css('opacity') == 0) {
       $('.story').css('opacity', 1);
     } else {
       $('.story').css('opacity', 0);
     }
 
-    $( '#stories-container' ).css( 'opacity', '1' );
-    $( '#stories-container > div' ).css( { 'opacity': '1', 'pointer-events': 'all' } );
+    $('#stories-container').css('opacity', '1');
+    $('#stories-container > div').css({ 'opacity': '1', 'pointer-events': 'all' });
   });
 
 
   // CLICK FLOATING STORIES
 
-  function makeNewPosition( myclass ) {
-	var story = $( myclass + ' #story-background' );
+  function makeNewPosition(myclass) {
+    var story = $(myclass + ' #story-background');
 
-    var h = $( '#stories-container' ).height( ) - story.height( );
-    var w = $( '#stories-container' ).width( ) - story.width( );
+    var h = $('#stories-container').height() - story.height();
+    var w = $('#stories-container').width() - story.width();
 
-    var nh = story.height( ) / 2 + Math.floor(Math.random() * h);
-    var nw = story.width( ) / 2 + Math.floor(Math.random() * w);
+    var nh = story.height() / 2 + Math.floor(Math.random() * h);
+    var nw = story.width() / 2 + Math.floor(Math.random() * w);
 
-    return [ nh, nw ];
+    return [nh, nw];
 
   }
 
-  function animateDiv( myclass ) {
-    var newq = makeNewPosition( myclass );
+  function animateDiv(myclass) {
+    var newq = makeNewPosition(myclass);
     var oldq = $(myclass).offset();
-    var speed = calcSpeed( [ oldq.top, oldq.left ], newq );
+    var speed = calcSpeed([oldq.top, oldq.left], newq);
 
-    $( myclass ).animate( {
-      top: newq[ 0 ],
-      left: newq[ 1 ]
-    }, speed, function( ) {
-      animateDiv( myclass );
+    $(myclass).animate({
+      top: newq[0],
+      left: newq[1]
+    }, speed, function () {
+      animateDiv(myclass);
     });
 
   };
@@ -156,6 +160,7 @@ $( document ).ready(function () {
   // SHOW FLOATING STORIES
 
   function showStories() {
+
     var x = document.getElementById('stories-container');
     if (x.style.display === "none") {
       x.style.display = "inline-block";
@@ -164,26 +169,77 @@ $( document ).ready(function () {
     }
   }
 
-  $('.story-1').on(eventname, function (event) {
-  	$( this ).css( 'z-index', '+1' );
 
-  	$('.story-text-1').css( 'display', 'inline-block' );
+  const stories = document.querySelectorAll('.story');
+  stories.forEach(story => {
+    story.addEventListener('click', () => {
+      stories.forEach(story => {
+        story.style.zIndex = 0;
+        var storyTitle = story.querySelector('.story-title');
+        var storyText = story.querySelector('.story-text');
+        var storyBackground = story.querySelector('.story-background');
 
-  	var boxtext = $( '.story-text-1' );
-  	var boxheight = boxtext.outerHeight( );
+        storyText.style.display = 'none';
+        storyBackground.style.cssText = `
+      width: 0;
+      height: 0;
+      padding: 5vw;
 
-    $('.story-background-1').css( { 'width': '30vw',
-    								'height': boxheight + 'px',
-    								'padding': '0',
-									'border-radius': '0' } );
+      box-shadow: 0px 0px 50px 6px var(--brown);
+      border-radius: 50%;
+      `
+        storyTitle.style.top = `top: calc(-1.5em - 5vw)`;
+
+        setTimeout(function () {
+          storyText.style.opacity = 0;
+        }, 100);
+      })
+
+      story.style.zIndex += 1;
+      var storyTitle = story.querySelector('.story-title');
+      var storyText = story.querySelector('.story-text');
+      var textHeight = $(storyText).outerHeight();
+      // var textHeight = 200;
+      console.log(textHeight, storyText);
+      var storyBackground = story.querySelector('.story-background');
+
+      storyText.style.display = 'inline-block';
+      storyBackground.style.cssText = `
+      width: 30vw;
+      height: ${textHeight}px;
+      padding: 0;
+      border-radius: 0;`
+
+      storyTitle.style.top = `calc(-1.5em - ${textHeight / 2}px)`;
+
+      setTimeout(function () {
+        storyText.style.opacity = 1;
+      }, 500);
+    })
+  })
+
+  // $('.story-1').on(eventname, function (event) {
+  //   $(this).css('z-index', '+1');
+
+  //   $('.story-text-1').css('display', 'inline-block');
+
+  //   var boxtext = $('.story-text-1');
+  //   var boxheight = boxtext.outerHeight();
+
+  //   $('.story-background-1').css({
+  //     'width': '30vw',
+  //     'height': boxheight + 'px',
+  //     'padding': '0',
+  //     'border-radius': '0'
+  //   });
 
 
-    $('.story-title-1').css( 'top', 'calc(-1.5em - ' + ( boxheight / 2 ) + 'px)' );
+  //   $('.story-title-1').css('top', 'calc(-1.5em - ' + (boxheight / 2) + 'px)');
 
-    setTimeout( function( ) {
-		$('.story-text-1').css( 'opacity', '1' );
-    }, 500 );
-  } );
+  //   setTimeout(function () {
+  //     $('.story-text-1').css('opacity', '1');
+  //   }, 500);
+  // });
 
   // ---------------------------
 
@@ -197,10 +253,10 @@ $( document ).ready(function () {
       $('#podcast-button').css('-webkit-filter', 'blur(3px)');
     }
 
-    $('.about-section').css( { 'opacity': 0, 'pointer-events': 'none' } );
-//    $( '#stories-container' ).css( 'pointer-events', 'none' );
+    $('.about-section').css({ 'opacity': 0, 'pointer-events': 'none' });
+    //    $( '#stories-container' ).css( 'pointer-events', 'none' );
 
-    closeStories( );
+    closeStories();
 
     $('#about-button').css('-webkit-filter', 'blur(3px)');
 
@@ -219,28 +275,50 @@ $( document ).ready(function () {
     } else {
       $('#dropdown-podcast').css('display', 'inline-block');
     }
-  } );
+  });
 
 
 
   // ACCORDION
-let acc = document.getElementsByClassName("accordion");
+  // =-=-=-=-=-=-=-=-=-=-
+  // This is already implemented in playPodcasts()
+  // =-=-=-=-=-=-=-=-=-=-
+  // let acc = document.querySelectorAll(".accordion");
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    // this.classList.toggle("active");
-    let panel = this.nextElementSibling;
-    if ($('.accordion-content').css('display') == 'none') {
-      $('.accordion-content').css('display', 'inline-block');
-      $('.accordion').css('background-color', 'var(--brown)');
-      $('.accordion').css('border', '3px solid var(--brown)');
-    } else {
-      $('.accordion-content').css('display', 'none');
-      $('.accordion').css('background-color', 'transparent');
-      $('.accordion').css('border', '3px solid var(--brown)');
-    }
-  });
-}
+  // for (i = 0; i < acc.length; i++) {
+  //   acc[i].addEventListener("click", function (e) {
+  //     acc.forEach(accordion => {
+  //       const accordionContent = accordion.querySelector('.accordion-content');
+  //       const playBtn = accordion.querySelector('.play-button');
+  //       const pauseBtn = accordion.querySelector('.pause-button');
+
+  //       accordionContent.style.display = 'none';
+  //       accordion.style.backgroundColor = 'transparent';
+  //       accordion.style.border = '3px solid var(--brown)';
+  //       playBtn.classList.add('active');
+  //       pauseBtn.classList.remove('active');
+  //     })
+
+  //     const currentAccordion = e.currentTarget;
+  //     const accordionContent = currentAccordion.querySelector('.accordion-content');
+  //     const playBtn = currentAccordion.querySelector('.play-button');
+  //     const pauseBtn = currentAccordion.querySelector('.pause-button');
+
+
+  //     if (accordionContent.style.display === 'inline-block') {
+  //       accordionContent.style.display = 'none';
+  //       currentAccordion.style.backgroundColor = 'transparent';
+  //       currentAccordion.style.border = '3px solid var(--brown)';
+  //     } else {
+  //       accordionContent.style.display = 'inline-block';
+  //       currentAccordion.style.backgroundColor = 'var(--brown)';
+  //       currentAccordion.style.border = '3px solid var(--brown)';
+  //     }
+
+  //     playBtn.classList.remove('active');
+  //     pauseBtn.classList.add('active');
+  //   });
+  // }
 
   // $('.accordion').on(eventname, function (event) {
   //
@@ -276,10 +354,24 @@ function playPodcasts() {
     playButton.addEventListener('click', () => {
       // stop all other players if active
       podcasts.forEach(podcast => {
+        const accordionContent = podcast.querySelector('.accordion-content');
+        const playBtn = podcast.querySelector('.play-button');
+        const pauseBtn = podcast.querySelector('.pause-button');
+
+        accordionContent.style.display = 'none';
+        podcast.style.backgroundColor = 'transparent';
+        podcast.style.border = '3px solid var(--brown)';
+        playBtn.classList.add('active');
+        pauseBtn.classList.remove('active');
+
         const audio = podcast.getElementsByClassName('audio')[0];
         audio.pause();
       })
 
+      const accordionContent = podcast.querySelector('.accordion-content');
+      accordionContent.style.display = 'inline-block';
+      podcast.style.backgroundColor = 'var(--brown)';
+      podcast.style.border = '3px solid var(--brown)';
       audio.play();
       playButton.classList.toggle('active');
       pauseButton.classList.toggle('active');
@@ -287,6 +379,11 @@ function playPodcasts() {
 
     // write logic for when the sound has stopped inside this function
     pauseButton.addEventListener('click', () => {
+      const accordionContent = podcast.querySelector('.accordion-content');
+      accordionContent.style.display = 'none';
+      podcast.style.backgroundColor = 'transparent';
+      podcast.style.border = '3px solid var(--brown)';
+
       audio.pause();
       playButton.classList.toggle('active');
       pauseButton.classList.toggle('active');
