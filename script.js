@@ -224,19 +224,38 @@ $( document ).ready(function () {
 
 
   // ACCORDION
+let acc = document.getElementsByClassName("accordion");
 
-  $('.accordion').on(eventname, function (event) {
-
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    // this.classList.toggle("active");
+    let panel = this.nextElementSibling;
     if ($('.accordion-content').css('display') == 'none') {
       $('.accordion-content').css('display', 'inline-block');
+      $('.accordion').css('background-color', 'var(--brown)');
+      $('.accordion').css('border', '3px solid var(--brown)');
     } else {
       $('.accordion-content').css('display', 'none');
+      $('.accordion').css('background-color', 'transparent');
+      $('.accordion').css('border', '3px solid var(--brown)');
     }
-
-    $('.accordion').css('background-color', 'var(--brown)');
-    $('.accordion').css('border', '3px solid var(--brown)');
-
   });
+}
+
+  // $('.accordion').on(eventname, function (event) {
+  //
+  //
+  //   if ($('.accordion-content').css('display') == 'none') {
+  //     $('.accordion-content').css('display', 'inline-block');
+  //     $('.accordion').css('background-color', 'var(--brown)');
+  //     $('.accordion').css('border', '3px solid var(--brown)');
+  //   } else {
+  //     $('.accordion-content').css('display', 'none');
+  //     $('.accordion').css('background-color', 'transparent');
+  //     $('.accordion').css('border', '3px solid var(--brown)');
+  //   }
+  //
+  // });
 
   playPodcasts();
 
