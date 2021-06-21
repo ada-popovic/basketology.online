@@ -419,11 +419,6 @@ $.fn.extend({
   }
 });
 
-function btnChrome_onclick() {
-  document.documentElement.webkitRequestFullScreen();
-}
-
-
 $(function () {
   $(this).disableSelection();
 });
