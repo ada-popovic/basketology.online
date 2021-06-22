@@ -199,8 +199,6 @@ $(document).ready(function () {
       var storyTitle = story.querySelector('.story-title');
       var storyText = story.querySelector('.story-text');
       var textHeight = $(storyText).outerHeight();
-      // var textHeight = 200;
-      console.log(textHeight, storyText);
       var storyBackground = story.querySelector('.story-background');
 
       storyText.style.display = 'inline-block';
@@ -270,7 +268,7 @@ $(document).ready(function () {
       $('#background-video').css('-webkit-filter', 'blur(14px)');
     }
 
-    if ($('#dropdown-podcast').css('display') == 'inline-block') {
+    if ($('#dropdown-podcast').css('display') === 'inline-block') {
       $('#dropdown-podcast').css('display', 'none');
     } else {
       $('#dropdown-podcast').css('display', 'inline-block');
