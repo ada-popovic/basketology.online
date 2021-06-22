@@ -78,7 +78,6 @@ body {
   /* -webkit-filter: blur(5px); */
 }
 
-
 /* NAVIGATION */
 .nav-button {
   text-decoration: none !important;
@@ -153,11 +152,10 @@ body {
 }
 
 /* ABOUT-DESCRIPTION */
-
 .about-section {
-	opacity: 0;
-	pointer-events: none;
-/*  display: none; */
+  opacity: 0;
+  pointer-events: none;
+  /*  display: none; */
 }
 
 .description {
@@ -181,22 +179,26 @@ body {
   padding-bottom: 15vw;
 }
 
-
-.graph{
+.graph {
   display: flex;
   justify-content: center;
 }
 
-.graph img{
+.graph img {
   width: 100vw;
 }
 
 /* ABOUT-FLOATING STORIES */
 #story {
-  position: absolute; /* fixed; */
+  position: absolute;
+  /* fixed; */
   /* display: none; */
   opacity: 0;
   overflow: visible;
+}
+
+#stories-trigger {
+  color: lime;
 }
 
 #stories-container {
@@ -211,20 +213,18 @@ body {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-
   pointer-events: none;
 }
 
 #story-title {
-	position: absolute;
-	top: calc(-1.5em - 5vw);
+  position: absolute;
+  top: calc(-1.5em - 5vw);
   left: 0;
-	width: auto;
-	transform: translate(-50%,0);
-  	transition: all 0.5s ease-in-out;
-	white-space: nowrap;
-/* 	z-index: +1; */
-
+  width: auto;
+  transform: translate(-50%, 0);
+  transition: all 0.5s ease-in-out;
+  white-space: nowrap;
+  /* 	z-index: +1; */
   color: var(--brown);
   text-align: center;
   font-size: 2em;
@@ -233,26 +233,22 @@ body {
   text-shadow: 0 0 1px black;
 }
 
-#story-content {
-}
+#story-content {}
 
 .story-background {
   width: 0;
   height: 0;
   padding: 5vw;
   position: relative;
-
   background-color: lime;
   backdrop-filter: blur(10px);
   /* -webkit-filter: blur(10px); */
-  transform: translate(-50%,-50%);
-
+  transform: translate(-50%, -50%);
   box-shadow: 0px 0px 50px 6px var(--brown);
   border-radius: 50%;
-
   transform-origin: center;
   transition: all 0.5s ease-in-out;
-  Background-attachment:fixed;
+  Background-attachment: fixed;
 }
 
 /* .story-background::after {
@@ -265,10 +261,9 @@ body {
   background: linear-gradient(transparent, white);
   pointer-events: none;
 } */
-
 #story-text {
   position: absolute;
-  padding:15px;
+  padding: 15px;
   color: var(--brown);
   font-family: var(--text);
   /* padding: 20px; */
@@ -286,17 +281,13 @@ body {
   /* font-weight: bold; */
 }
 
+#story-text p {
+  margin: 0 0 1em
+}
 
-
-
-#story-text p { margin: 0 0 1em }
-#story-text p:last-child { margin-bottom: 0 }
-
-
-
-
-
-
+#story-text p:last-child {
+  margin-bottom: 0
+}
 
 /* PODCAST-ACCORDION */
 #dropdown-podcast {
@@ -314,10 +305,10 @@ body {
   backdrop-filter: blur(10px);
 }
 
-.podcast-buttons > .play-button ,
-.podcast-buttons > .pause-button{
+.podcast-buttons>.play-button,
+.podcast-buttons>.pause-button {
   display: none;
-  fill : lime;
+  fill: lime;
   height: 50px;
   width: 100%;
   float: left;
@@ -328,8 +319,8 @@ body {
   color: white;
 }
 
-.podcast-buttons > .play-button.active,
-.podcast-buttons > .pause-button.active {
+.podcast-buttons>.play-button.active,
+.podcast-buttons>.pause-button.active {
   display: block;
 }
 
@@ -348,9 +339,8 @@ body {
   height: 100%;
   background: lime;
 }
+
 /* AUDIO PLAYER */
-
-
 .accordion {
   align-items: center;
   margin-bottom: 1%;
@@ -391,7 +381,7 @@ body {
 .accordion-content {
   margin-top: 1%;
   height: auto;
-  width:100%;
+  width: 100%;
   display: none;
   color: var(--white);
   animation: display_transition .8s ease-in-out;
@@ -403,9 +393,19 @@ body {
 }
 
 @keyframes display_transition {
-  0% {display: none; opacity:0;}
-  1% {display: inline-block; opacity: 0; }
-  100% {opacity: 1;}
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: inline-block;
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .column {
@@ -413,7 +413,6 @@ body {
   font-size: 1em;
   font-family: var(--text);
   word-break: break-word;
-
 }
 
 .left {
@@ -421,7 +420,6 @@ body {
   width: 45%;
   margin-right: 0px;
   margin-top: 20px;
-
 }
 
 .right {
@@ -429,26 +427,75 @@ body {
   width: 54%;
 }
 
-.basket-drawing{
+.basket-drawing {
   position: absolute;
   display: block;
-  color: lime;
 }
 
-.basket-drawing img{
+.basket-drawing img {
   width: 30%;
 }
 
-.podcast-links{
-  color: white;
+.basket-drawing-description {
+  color: lime;
+  margin-top: 0px;
 }
 
-.podcast-quote{
+.podcast-links {
+  color: white;
+  font-size: 1.2vw;
+}
+
+.podcast-quote {
   font-size: 2vw;
   font-style: italic;
 }
 
-.podcast-links-container{
+.podcast-keywords {
+  font-size: 0.9vw;
+  display: block;
+  margin-top: -5px;
+}
+
+.keyword-on {
+  display: inline;
+  padding-right: 10px;
+  /* padding-bottom: 10px; */
+  background-color: lime;
+  color: black;
+  border-radius: 20px;
+  /* Making border radius */
+  width: auto;
+  /* Making auto-sizable width */
+  height: auto;
+  /* Making auto-sizable height */
+  padding: 4px 10px 3px 10px;
+  /* Making space around letters */
+  font-style: bold;
+  line-height: 200%;
+  break-word: keep-all;
+}
+
+.keyword-off {
+  display: inline;
+  padding-right: 10px;
+  /* padding-bottom: 10px; */
+  border: 2px solid lime;
+  color: black;
+  border-radius: 20px;
+  /* Making border radius */
+  width: auto;
+  /* Making auto-sizable width */
+  height: auto;
+  /* Making auto-sizable height */
+  padding: 4px 10px 3px 10px;
+  /* Making space around letters */
+  font-style: bold;
+  line-height: 240%;
+  break-word: keep-all;
+}
+
+.podcast-links-container {
   width: 40%;
   position: absolute;
   display: block;
@@ -459,7 +506,6 @@ body {
   background-color: var(--brown);
   display: none;
 }
-
 
 @media (max-width: 1400px) {
   #background-video {
@@ -490,9 +536,11 @@ body {
   .description {
     font-size: 1.7em;
   }
-  .basket-drawing img{
+
+  .basket-drawing img {
     width: 40%;
   }
+
   #dropdown-podcast {
     display: none;
     margin-top: 10%;
@@ -507,23 +555,15 @@ body {
     transition: all 0.5s ease-in-out;
     backdrop-filter: blur(10px);
   }
-
-
-
-
-
-
-
-
 }
 
 @media (max-width: 800px) {
-	#background-video {
-	  position: fixed;
-	  top: 0;
-	  margin-left: 300px;
-	  width: 100vw;
-	  height: 100vh;
-	  transform: scale(4, 4);
-	}
+  #background-video {
+    position: fixed;
+    top: 0;
+    margin-left: 300px;
+    width: 100vw;
+    height: 100vh;
+    transform: scale(4, 4);
+  }
 }
