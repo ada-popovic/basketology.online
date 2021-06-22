@@ -2,6 +2,7 @@
 :root {
   --brown: #463718;
   --white: white;
+  --lime: lime;
   --lightbrown: #9B8473;
   --text: 'Replica Pro';
   /* --bold: 'Replica Bold';
@@ -162,9 +163,10 @@ body {
 .description {
   z-index: 10;
   display: inline-block;
+  /* background-color: red; */
   position: absolute;
   width: 50%;
-  height: 80%;
+  height: auto;
   margin-left: 25%;
   margin-top: 10%;
   color: var(--white);
@@ -176,7 +178,17 @@ body {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
-  margin-bottom: 10vw;
+  padding-bottom: 15vw;
+}
+
+
+.graph{
+  display: flex;
+  justify-content: center;
+}
+
+.graph img{
+  width: 100vw;
 }
 
 /* ABOUT-FLOATING STORIES */
@@ -224,13 +236,15 @@ body {
 #story-content {
 }
 
-#story-background {
+.story-background {
   width: 0;
   height: 0;
   padding: 5vw;
+  position: relative;
 
   background-color: lime;
-  -webkit-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  /* -webkit-filter: blur(10px); */
   transform: translate(-50%,-50%);
 
   box-shadow: 0px 0px 50px 6px var(--brown);
@@ -238,23 +252,41 @@ body {
 
   transform-origin: center;
   transition: all 0.5s ease-in-out;
+  Background-attachment:fixed;
 }
+
+/* .story-background::after {
+  content: '';
+  position: absolute;
+  display: inline-block;
+  bottom: 0;
+  width: 100%;
+  height: 35px;
+  background: linear-gradient(transparent, white);
+  pointer-events: none;
+} */
 
 #story-text {
   position: absolute;
-  top: 0;
+  padding:15px;
   color: var(--brown);
   font-family: var(--text);
-  padding: 20px;
-  width: 30vw;
-  height: auto;
-  transform: translate(-50%,-50%);
-  transform-origin: center;
+  /* padding: 20px; */
+  width: 90%;
+  /* height: auto; */
+  /* transform: translate(-50%,-50%);
+  transform-origin: center; */
   transition: opacity 0.5s ease-in-out;
   box-sizing: border-box;
-  overflow: hidden;
+  /* overflow: hidden; */
+  overflow-y: scroll;
   opacity: 0;
+  font-size: 1.5em;
+  font-family: var(--text);
+  font-weight: bold;
 }
+
+
 
 
 #story-text p { margin: 0 0 1em }
@@ -269,10 +301,9 @@ body {
 /* PODCAST-ACCORDION */
 #dropdown-podcast {
   display: none;
-
   margin-top: 10%;
   width: 50%;
-  height: 80%;
+  height: auto;
   margin-left: 25%;
   cursor: pointer;
   -webkit-transition: all 0.5s ease-in-out;
@@ -280,6 +311,7 @@ body {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
+  backdrop-filter: blur(10px);
 }
 
 .podcast-buttons > .play-button ,
@@ -293,7 +325,7 @@ body {
 
 .elapsed-time {
   font-family: var(--text);
-  color: red;
+  color: white;
 }
 
 .podcast-buttons > .play-button.active,
@@ -353,10 +385,12 @@ body {
   font-size: 1em;
   font-family: var(--text);
   text-align: right;
+  margin-right: 10px;
 }
 
 .accordion-content {
-  margin-top: 5%;
+  margin-top: 1%;
+  height: auto;
   width:100%;
   display: none;
   color: var(--white);
@@ -378,6 +412,7 @@ body {
   color: var(--white);
   font-size: 1em;
   font-family: var(--text);
+  word-break: break-all;
 }
 
 .left {
@@ -395,6 +430,7 @@ body {
 .basket-drawing{
   position: absolute;
   display: inline-block;
+  color: lime;
 }
 
 .basket-drawing img{
@@ -435,7 +471,6 @@ body {
   }
 
   .description {
-    width: 60%;
     font-size: 2em;
   }
 }

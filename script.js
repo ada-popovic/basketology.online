@@ -148,7 +148,7 @@ $(document).ready(function () {
 
     var greatest = x > y ? x : y;
 
-    var speedModifier = 0.03;
+    var speedModifier = 0.04;
 
     var speed = Math.ceil(greatest / speedModifier);
 
@@ -188,7 +188,8 @@ $(document).ready(function () {
       box-shadow: 0px 0px 50px 6px var(--brown);
       border-radius: 50%;
       `
-        storyTitle.style.top = `top: calc(-1.5em - 5vw)`;
+        // storyTitle.style.top = `top: calc(-1.5em - 5vw)`;
+        storyTitle.style.top = `-3em`;
 
         setTimeout(function () {
           storyText.style.opacity = 0;
@@ -201,14 +202,23 @@ $(document).ready(function () {
       var textHeight = $(storyText).outerHeight();
       var storyBackground = story.querySelector('.story-background');
 
+      // storyText.style.display = 'inline-block';
+      // storyBackground.style.cssText = `
+      // width: 30vw;
+      // height: ${textHeight}px;
+      // padding: 0;
+      // border-radius: 0;`
+
       storyText.style.display = 'inline-block';
       storyBackground.style.cssText = `
       width: 30vw;
-      height: ${textHeight}px;
+      height: 40vw;
       padding: 0;
-      border-radius: 0;`
+      border-radius: 5%;
+      overflow: scroll;`
 
-      storyTitle.style.top = `calc(-1.5em - ${textHeight / 2}px)`;
+      // storyTitle.style.top = `calc(-1.5em - ${textHeight / 2}px)`;
+      storyTitle.style.top = `-8.5em`;
 
       setTimeout(function () {
         storyText.style.opacity = 1;
@@ -358,7 +368,7 @@ function playPodcasts() {
 
         accordionContent.style.display = 'none';
         podcast.style.backgroundColor = 'transparent';
-        podcast.style.border = '3px solid var(--brown)';
+        podcast.style.border = '3px solid var(--lime)';
         playBtn.classList.add('active');
         pauseBtn.classList.remove('active');
 
@@ -380,7 +390,7 @@ function playPodcasts() {
       const accordionContent = podcast.querySelector('.accordion-content');
       accordionContent.style.display = 'none';
       podcast.style.backgroundColor = 'transparent';
-      podcast.style.border = '3px solid var(--brown)';
+      podcast.style.border = '3px solid var(--lime)';
 
       audio.pause();
       playButton.classList.toggle('active');
