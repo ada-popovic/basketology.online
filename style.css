@@ -385,7 +385,7 @@ body {
   font-size: 1em;
   font-family: var(--text);
   text-align: right;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .accordion-content {
@@ -412,7 +412,8 @@ body {
   color: var(--white);
   font-size: 1em;
   font-family: var(--text);
-  word-break: break-all;
+  word-break: break-word;
+
 }
 
 .left {
@@ -420,21 +421,37 @@ body {
   width: 45%;
   margin-right: 0px;
   margin-top: 20px;
+
 }
 
 .right {
   float: right;
-  width: 50%;
+  width: 54%;
 }
 
 .basket-drawing{
   position: absolute;
-  display: inline-block;
+  display: block;
   color: lime;
 }
 
 .basket-drawing img{
   width: 30%;
+}
+
+.podcast-links{
+  color: white;
+}
+
+.podcast-quote{
+  font-size: 2vw;
+  font-style: italic;
+}
+
+.podcast-links-container{
+  width: 40%;
+  position: absolute;
+  display: block;
 }
 
 .panel {
@@ -476,6 +493,28 @@ body {
   .basket-drawing img{
     width: 40%;
   }
+  #dropdown-podcast {
+    display: none;
+    margin-top: 10%;
+    width: 60%;
+    height: auto;
+    margin-left: 20%;
+    cursor: pointer;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    backdrop-filter: blur(10px);
+  }
+
+
+
+
+
+
+
+
 }
 
 @media (max-width: 800px) {
