@@ -170,7 +170,7 @@ body {
   margin-left: 25%;
   margin-top: 10%;
   color: var(--white);
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-family: var(--text);
   text-align: left;
   -webkit-transition: all 0.5s ease-in-out;
@@ -281,9 +281,9 @@ body {
   /* overflow: hidden; */
   overflow-y: scroll;
   opacity: 0;
-  font-size: 1.5em;
+  font-size: 1.1em;
   font-family: var(--text);
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 
@@ -471,7 +471,10 @@ body {
   }
 
   .description {
-    font-size: 2em;
+    font-size: 1.7em;
+  }
+  .basket-drawing img{
+    width: 40%;
   }
 }
 
