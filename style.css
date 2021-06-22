@@ -163,9 +163,9 @@ body {
   z-index: 10;
   display: inline-block;
   position: absolute;
-  width: 30%;
+  width: 50%;
   height: 80%;
-  margin-left: 3%;
+  margin-left: 25%;
   margin-top: 10%;
   color: var(--white);
   font-size: 1.3em;
@@ -176,6 +176,7 @@ body {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
+  margin-bottom: 10vw;
 }
 
 /* ABOUT-FLOATING STORIES */
