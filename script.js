@@ -1,10 +1,28 @@
+var getSiblings = function (elem) {
+
+    // Setup siblings array and get the first sibling
+    var siblings = [];
+    var sibling = elem.parentNode.firstChild;
+
+    // Loop through each sibling and push to the array
+    while (sibling) {
+        if (sibling.nodeType === 1 && sibling !== elem) {
+            siblings.push(sibling);
+        }
+        sibling = sibling.nextSibling
+    }
+
+    return siblings;
+
+};
+
 $(document).ready(function() {
 
   // ANIMATE FLOATING STORIES
   for (var i = 1; i <= 4; i++) {
     var story = '.story-' + i;
 
-    var pos = makeNewPosition(story);
+    var pos = makeNewPosition( story );
     $(story).css({
       'top': pos[0] + 'px',
       'left': pos[1] + 'px'
@@ -20,15 +38,8 @@ $(document).ready(function() {
       'pointer-events': 'none'
     });
 
-    $('#story-background').css({
-      'width': 0,
-      'height': 0,
-      'padding': '5vw',
-      'border-radius': '50%'
-    });
-
-    $('#story-title').css('top', 'calc(-1.5em - 5vw)');
-    $('#story-text').css('opacity', 0);
+    $( '.story' ).removeClass( 'opened' );
+    $( '.story-text').css('opacity', 0);
   }
 
   // fixing the touch event
@@ -45,17 +56,21 @@ $(document).ready(function() {
   $('#home-button').on(eventname, function(event) {
 
     $('#about-button').css('-webkit-filter', 'blur(3px)');
-    $('#podcast-button').css('-webkit-filter', 'blur(3px)');
     $('.about-section').css({
       'opacity': 0,
       'pointer-events': 'none'
     });
-    //('display', 'none');
+    $('.about-section .description' ).css( 'display', 'none' );
+
+    $('#podcast-button').css('-webkit-filter', 'blur(3px)');
     $('.podcast-section').css('display', 'none');
     $('.accordion-content').css('display', 'none');
     $('#background-video').css('-webkit-filter', 'blur(0px)');
 
     closeStories();
+
+
+    window.scroll( 0, 0 );
   });
 
   // CLICK BACKGROUND
@@ -78,6 +93,7 @@ $(document).ready(function() {
 
   // CLICK ABOUT
   $('#about-button').on(eventname, function(event) {
+
     if ($('#background-video').css('-webkit-filter') == 'blur(15px)') {
       $('#background-video').css('-webkit-filter', 'blur(0px)');
     } else if ($('#background-video').css('-webkit-filter') == 'blur(14px)') {
@@ -96,6 +112,7 @@ $(document).ready(function() {
 
     $('#podcast-button').css('-webkit-filter', 'blur(3px)');
 
+    $('.about-section .description' ).css( 'display', 'block' );
     if ($('.about-section').css('opacity') == 1) {
       $('.about-section').css({
         'opacity': 0,
@@ -108,6 +125,8 @@ $(document).ready(function() {
         'pointer-events': 'all'
       });
     }
+
+    window.scroll( 0, 0 );
 
   });
 
@@ -131,31 +150,33 @@ $(document).ready(function() {
 
   // CLICK FLOATING STORIES
 
-  function makeNewPosition(myclass) {
-    var story = $(myclass + ' #story-background');
+  function makeNewPosition( myclass ) {
+    var story = $( myclass + ' .story-background');
+    var storytitle = $( myclass + ' .story-title');
 
-    var h = $('#stories-container').height() - story.height();
-    var w = $('#stories-container').width() - story.width();
+    var storytop = storytitle.position( ).top;
+    var storywidth = Math.max( storytitle.width( ), story.width( ) );
 
-    var nh = story.height() / 2 + Math.floor(Math.random() * h);
-    var nw = story.width() / 2 + Math.floor(Math.random() * w);
+    var h = $('#stories-container').height( ) + Math.min( storytop, -1 * story.height( ) );
+    var w = $('#stories-container').width( ) - storywidth;
+
+    var nh = -1 * storytop + Math.floor(Math.random() * h);
+    var nw = storywidth / 2 + Math.floor(Math.random() * w);
 
     return [nh, nw];
-
   }
 
-  function animateDiv(myclass) {
+  function animateDiv( myclass ) {
     var newq = makeNewPosition(myclass);
     var oldq = $(myclass).offset();
     var speed = calcSpeed([oldq.top, oldq.left], newq);
 
-    $(myclass).animate({
+    $( myclass ).animate( {
       top: newq[0],
       left: newq[1]
     }, speed, function() {
-      animateDiv(myclass);
-    });
-
+      animateDiv( myclass );
+    } );
   };
 
   function calcSpeed(prev, next) {
@@ -170,7 +191,6 @@ $(document).ready(function() {
     var speed = Math.ceil(greatest / speedModifier);
 
     return speed;
-
   }
 
 
@@ -190,87 +210,45 @@ $(document).ready(function() {
   const stories = document.querySelectorAll('.story');
   stories.forEach(story => {
     story.addEventListener('click', () => {
-      stories.forEach(story => {
-        story.style.zIndex = 0;
-        var storyTitle = story.querySelector('.story-title');
+      getSiblings( story ).forEach(story => {
+        story.classList.remove( 'opened' );
+
         var storyText = story.querySelector('.story-text');
-        var storyBackground = story.querySelector('.story-background');
-
-        storyText.style.display = 'none';
-        storyBackground.style.cssText = `
-      width: 0;
-      height: 0;
-      padding: 5vw;
-
-      box-shadow: 0px 0px 50px 6px var(--brown);
-      border-radius: 50%;
-      `
-        // storyTitle.style.top = `top: calc(-1.5em - 5vw)`;
-        storyTitle.style.top = `-3em`;
 
         setTimeout(function() {
           storyText.style.opacity = 0;
         }, 100);
       })
 
-      story.style.zIndex += 1;
-      var storyTitle = story.querySelector('.story-title');
+      story.classList.add( 'opened' );
+
+      var storyClass = story.className;
+      storyClass = storyClass.split( 'story ' ).pop( );
+      storyClass = storyClass.split( ' opened' ).shift( );
+
+      $( '.' + storyClass ).stop( );
+      //console.log( storyClass );
+
+
       var storyText = story.querySelector('.story-text');
-      var textHeight = $(storyText).outerHeight();
-      var storyBackground = story.querySelector('.story-background');
 
-      // storyText.style.display = 'inline-block';
-      // storyBackground.style.cssText = `
-      // width: 30vw;
-      // height: ${textHeight}px;
-      // padding: 0;
-      // border-radius: 0;`
-
-      storyText.style.display = 'inline-block';
-      storyBackground.style.cssText = `
-      width: 30vw;
-      height: 40vw;
-      padding: 0;
-      border-radius: 5%;
-      overflow: scroll;`
-
-      // storyTitle.style.top = `calc(-1.5em - ${textHeight / 2}px)`;
-      storyTitle.style.top = `-8.5em`;
 
       setTimeout(function() {
         storyText.style.opacity = 1;
+
+        animateDiv( '.' + storyClass );
       }, 500);
     })
   })
 
-  // $('.story-1').on(eventname, function (event) {
-  //   $(this).css('z-index', '+1');
-
-  //   $('.story-text-1').css('display', 'inline-block');
-
-  //   var boxtext = $('.story-text-1');
-  //   var boxheight = boxtext.outerHeight();
-
-  //   $('.story-background-1').css({
-  //     'width': '30vw',
-  //     'height': boxheight + 'px',
-  //     'padding': '0',
-  //     'border-radius': '0'
-  //   });
-
-
-  //   $('.story-title-1').css('top', 'calc(-1.5em - ' + (boxheight / 2) + 'px)');
-
-  //   setTimeout(function () {
-  //     $('.story-text-1').css('opacity', '1');
-  //   }, 500);
-  // });
 
   // ---------------------------
 
   // CLICK PODCAST
 
   $('#podcast-button').on(eventname, function(event) {
+
+    $('.about-section .description' ).css( 'display', 'none' );
 
     if ($('#podcast-button').css('-webkit-filter') == 'blur(3px)') {
       $('#podcast-button').css('-webkit-filter', 'blur(0px)');
@@ -301,65 +279,13 @@ $(document).ready(function() {
     } else {
       $('#dropdown-podcast').css('display', 'inline-block');
     }
+
+    window.scroll( 0, 0 );
   });
 
 
 
   // ACCORDION
-  // =-=-=-=-=-=-=-=-=-=-
-  // This is already implemented in playPodcasts()
-  // =-=-=-=-=-=-=-=-=-=-
-  // let acc = document.querySelectorAll(".accordion");
-
-  // for (i = 0; i < acc.length; i++) {
-  //   acc[i].addEventListener("click", function (e) {
-  //     acc.forEach(accordion => {
-  //       const accordionContent = accordion.querySelector('.accordion-content');
-  //       const playBtn = accordion.querySelector('.play-button');
-  //       const pauseBtn = accordion.querySelector('.pause-button');
-
-  //       accordionContent.style.display = 'none';
-  //       accordion.style.backgroundColor = 'transparent';
-  //       accordion.style.border = '3px solid var(--brown)';
-  //       playBtn.classList.add('active');
-  //       pauseBtn.classList.remove('active');
-  //     })
-
-  //     const currentAccordion = e.currentTarget;
-  //     const accordionContent = currentAccordion.querySelector('.accordion-content');
-  //     const playBtn = currentAccordion.querySelector('.play-button');
-  //     const pauseBtn = currentAccordion.querySelector('.pause-button');
-
-
-  //     if (accordionContent.style.display === 'inline-block') {
-  //       accordionContent.style.display = 'none';
-  //       currentAccordion.style.backgroundColor = 'transparent';
-  //       currentAccordion.style.border = '3px solid var(--brown)';
-  //     } else {
-  //       accordionContent.style.display = 'inline-block';
-  //       currentAccordion.style.backgroundColor = 'var(--brown)';
-  //       currentAccordion.style.border = '3px solid var(--brown)';
-  //     }
-
-  //     playBtn.classList.remove('active');
-  //     pauseBtn.classList.add('active');
-  //   });
-  // }
-
-  // $('.accordion').on(eventname, function (event) {
-  //
-  //
-  //   if ($('.accordion-content').css('display') == 'none') {
-  //     $('.accordion-content').css('display', 'inline-block');
-  //     $('.accordion').css('background-color', 'var(--brown)');
-  //     $('.accordion').css('border', '3px solid var(--brown)');
-  //   } else {
-  //     $('.accordion-content').css('display', 'none');
-  //     $('.accordion').css('background-color', 'transparent');
-  //     $('.accordion').css('border', '3px solid var(--brown)');
-  //   }
-  //
-  // });
 
   playPodcasts();
 

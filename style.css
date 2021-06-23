@@ -49,7 +49,7 @@
 
 /* BASICS */
 html, body {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   text-decoration: none;
 }
 
@@ -216,7 +216,7 @@ body {
   pointer-events: none;
 }
 
-#story-title {
+.story-title {
   position: absolute;
   top: calc(-1.5em - 5vw);
   left: 0;
@@ -242,13 +242,14 @@ body {
   position: relative;
   background-color: lime;
   backdrop-filter: blur(10px);
-  /* -webkit-filter: blur(10px); */
+  -webkit-filter: blur(10px);
   transform: translate(-50%, -50%);
   box-shadow: 0px 0px 50px 6px var(--brown);
   border-radius: 50%;
   transform-origin: center;
   transition: all 0.5s ease-in-out;
-  Background-attachment: fixed;
+  z-index: 0;
+  /* background-attachment: fixed; */
 }
 
 /* .story-background::after {
@@ -261,16 +262,19 @@ body {
   background: linear-gradient(transparent, white);
   pointer-events: none;
 } */
-#story-text {
+.story-text {
   position: absolute;
-  padding: 15px;
+  top: 0; left: 0;
+    width: 30vw;
+    height: 40vw;
+  padding: 20px;
   color: var(--brown);
   font-family: var(--text);
   /* padding: 20px; */
-  width: 90%;
+  /* width: 90%; */
   /* height: auto; */
-  /* transform: translate(-50%,-50%);
-  transform-origin: center; */
+  transform: translate(-50%,-50%);
+  transform-origin: center;
   transition: opacity 0.5s ease-in-out;
   box-sizing: border-box;
   /* overflow: hidden; */
@@ -278,15 +282,34 @@ body {
   opacity: 0;
   font-size: 1.1em;
   font-family: var(--text);
+  pointer-events: none;
   /* font-weight: bold; */
 }
 
-#story-text p {
+.story-text p {
   margin: 0 0 1em
 }
 
-#story-text p:last-child {
+.story-text p:last-child {
   margin-bottom: 0
+}
+
+.story.opened {
+  z-index: +1;
+}
+.story.opened .story-title {
+  top: calc(-1.5em - 20vw);
+  /* top: -8.5em; */
+}
+.story.opened .story-text {
+/*  opacity: 1; */
+  pointer-events: all;
+}
+.story.opened .story-background {
+  width: 30vw;
+  height: 40vw;
+  padding: 0;
+  border-radius: 5%;
 }
 
 /* PODCAST-ACCORDION */
