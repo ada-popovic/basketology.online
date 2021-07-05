@@ -55,16 +55,17 @@ $(document).ready(function() {
 
   $('#home-button').on(eventname, function(event) {
 
-    $('#about-button').css('-webkit-filter', 'blur(3px)');
+    $('#about-button').css('-webkit-filter', 'blur(0px)');
     $('.about-section').css({
       'opacity': 0,
       'pointer-events': 'none'
     });
     $('.about-section .description' ).css( 'display', 'none' );
 
-    $('#podcast-button').css('-webkit-filter', 'blur(3px)');
+    $('#podcast-button').css('-webkit-filter', 'blur(0px)');
     $('.podcast-section').css('display', 'none');
-    $('.accordion-content').css('display', 'none');
+    // $('.accordion-content').css('display', 'none');
+    $('.accordion-content').css('max-height', 0);
     $('#background-video').css('-webkit-filter', 'blur(0px)');
 
     closeStories();
@@ -78,7 +79,7 @@ $(document).ready(function() {
   $('#background-video').on(eventname, function(event) {
     $('#background-video').css('-webkit-filter', 'blur(0px)');
 
-    $('#about-button').css('-webkit-filter', 'blur(3px)');
+    $('#about-button').css('-webkit-filter', 'blur(0px)');
     $('.about-section').css({
       'opacity': 0,
       'pointer-events': 'none'
@@ -86,9 +87,10 @@ $(document).ready(function() {
 
     closeStories();
 
-    $('#podcast-button').css('-webkit-filter', 'blur(3px)');
+    $('#podcast-button').css('-webkit-filter', 'blur(0px)');
     $('.podcast-section').css('display', 'none');
-    $('.accordion-content').css('display', 'none');
+    // $('.accordion-content').css('display', 'none');
+    $('.accordion-content').css('max-height', 0 );
   });
 
   // CLICK ABOUT
@@ -102,15 +104,16 @@ $(document).ready(function() {
       $('#background-video').css('-webkit-filter', 'blur(15px)');
     }
 
-    if ($('#about-button').css('-webkit-filter') == 'blur(3px)') {
-      $('#about-button').css('-webkit-filter', 'blur(0px)');
-    } else {
-      $('#about-button').css('-webkit-filter', 'blur(3px)');
+    if ($('#podcast-button').css('-webkit-filter') == 'blur(6px)') {
+      $('#podcast-button').css('-webkit-filter', 'blur(0px)');
+    }
+    else {
+      $('#podcast-button').css('-webkit-filter', 'blur(6px)');
     }
 
     $('#dropdown-podcast').css('display', 'none');
 
-    $('#podcast-button').css('-webkit-filter', 'blur(3px)');
+
 
     $('.about-section .description' ).css( 'display', 'block' );
     if ($('.about-section').css('opacity') == 1) {
@@ -244,16 +247,29 @@ $(document).ready(function() {
 
   // ---------------------------
 
+
   // CLICK PODCAST
 
   $('#podcast-button').on(eventname, function(event) {
 
     $('.about-section .description' ).css( 'display', 'none' );
 
-    if ($('#podcast-button').css('-webkit-filter') == 'blur(3px)') {
+    if ($('#about-button').css('-webkit-filter') == 'blur(0px)') {
+      $('#about-button').css('-webkit-filter', 'blur(6px)');
+    }
+
+    if ($('#about-button').css('-webkit-filter') == 'blur(6px)') {
+      $('#about-button').css('-webkit-filter', 'blur(0px)');
+    }
+
+    if ($('#podcast-button').css('-webkit-filter') == 'blur(0px)') {
       $('#podcast-button').css('-webkit-filter', 'blur(0px)');
-    } else {
-      $('#podcast-button').css('-webkit-filter', 'blur(3px)');
+
+    }
+
+    if ($('#podcast-button').css('-webkit-filter') == 'blur(6px)') {
+      $('#podcast-button').css('-webkit-filter', 'blur(0px)');
+
     }
 
     $('.about-section').css({
@@ -264,7 +280,7 @@ $(document).ready(function() {
 
     closeStories();
 
-    $('#about-button').css('-webkit-filter', 'blur(3px)');
+    // $('#about-button').css('-webkit-filter', 'blur(3px)');
 
     if ($('#background-video').css('-webkit-filter') == 'blur(14px)') {
       $('#background-video').css('-webkit-filter', 'blur(0px)');
@@ -285,6 +301,7 @@ $(document).ready(function() {
 
 
 
+
   // ACCORDION
 
   playPodcasts();
@@ -296,23 +313,54 @@ function playPodcasts() {
   const podcasts = document.querySelectorAll('.accordion');
 
   podcasts.forEach(podcast => {
+    const title = podcast.getElementsByClassName('more')[0];
     const audio = podcast.getElementsByClassName('audio')[0];
     const playButton = podcast.getElementsByClassName('play-button')[0];
     const pauseButton = podcast.getElementsByClassName('pause-button')[0];
     const playhead = podcast.getElementsByClassName('playhead')[0];
     const elapsedTime = podcast.getElementsByClassName('elapsed-time')[0];
 
+
+    title.addEventListener( 'click', ( ) => {
+        const accordionContent = podcast.querySelector('.accordion-content');
+        // let contentVisible = ( accordionContent.style.display == 'inline-block' );
+        let contentVisible = ( accordionContent.style.maxHeight != '0px' && accordionContent.style.maxHeight != ''  );
+console.log( accordionContent.style.maxHeight );
+        // stop all other players if active
+        podcasts.forEach( podcast => {
+          const accordionContent = podcast.querySelector('.accordion-content');
+          // accordionContent.style.display = 'none';
+          accordionContent.style.maxHeight = '0';
+
+          podcast.style.backgroundColor = 'transparent';
+          // podcast.style.border = '3px solid var(--lime)';
+        } );
+
+        if ( contentVisible ) {
+//          accordionContent.style.display = 'none';
+          accordionContent.style.maxHeight = '0';
+
+          podcast.style.backgroundColor = 'transparent';
+          // podcast.style.border = '3px solid var(--lime)';
+        } else {
+          // accordionContent.style.display = 'inline-block';
+          accordionContent.style.maxHeight = '1000px';
+
+          podcast.style.backgroundColor = 'var(--brown)';
+          podcast.style.border = '3px solid var(--brown)';
+        }
+    } );
+
     // write logic for when the sound is playing inside this function
     playButton.addEventListener('click', () => {
       // stop all other players if active
       podcasts.forEach(podcast => {
-        const accordionContent = podcast.querySelector('.accordion-content');
         const playBtn = podcast.querySelector('.play-button');
         const pauseBtn = podcast.querySelector('.pause-button');
 
-        accordionContent.style.display = 'none';
-        podcast.style.backgroundColor = 'transparent';
-        podcast.style.border = '3px solid var(--lime)';
+        // accordionContent.style.display = 'none';
+        // podcast.style.backgroundColor = 'transparent';
+        // podcast.style.border = '3px solid var(--lime)';
         playBtn.classList.add('active');
         pauseBtn.classList.remove('active');
 
@@ -320,10 +368,10 @@ function playPodcasts() {
         audio.pause();
       })
 
-      const accordionContent = podcast.querySelector('.accordion-content');
-      accordionContent.style.display = 'inline-block';
-      podcast.style.backgroundColor = 'var(--brown)';
-      podcast.style.border = '3px solid var(--brown)';
+      // const accordionContent = podcast.querySelector('.accordion-content');
+      // accordionContent.style.display = 'inline-block';
+      // podcast.style.backgroundColor = 'var(--brown)';
+      // podcast.style.border = '3px solid var(--brown)';
       audio.play();
       playButton.classList.toggle('active');
       pauseButton.classList.toggle('active');
@@ -331,10 +379,10 @@ function playPodcasts() {
 
     // write logic for when the sound has stopped inside this function
     pauseButton.addEventListener('click', () => {
-      const accordionContent = podcast.querySelector('.accordion-content');
-      accordionContent.style.display = 'none';
-      podcast.style.backgroundColor = 'transparent';
-      podcast.style.border = '3px solid var(--lime)';
+      // const accordionContent = podcast.querySelector('.accordion-content');
+      // accordionContent.style.display = 'none';
+      // podcast.style.backgroundColor = 'transparent';
+      // podcast.style.border = '3px solid var(--lime)';
 
       audio.pause();
       playButton.classList.toggle('active');
@@ -346,9 +394,26 @@ function playPodcasts() {
         let currentPos = audio.currentTime / audio.duration * 100;
         playhead.style.width = `${currentPos}%`;
         elapsedTime.innerText = millisToMinutesAndSeconds(audio.currentTime * 1000);
-      }, 20)
+      }, 20 )
     });
 
+
+    audio.addEventListener("pause", ( event ) => {
+      playButton.classList.add('active');
+      pauseButton.classList.remove('active');
+    }, false );
+
+    audio.addEventListener("ended", ( event ) => {
+          audio.currentTime = 0;
+    }, false );
+
+    const timeline = podcast.querySelector( '.playhead-container' );
+    timeline.addEventListener ( 'click', ( event ) => {
+      let percentage = event.offsetX  /  event.target.offsetWidth;
+      let duration = audio.duration;
+
+      audio.currentTime = percentage * duration;
+    } );
   });
 
   function millisToMinutesAndSeconds(millis) {

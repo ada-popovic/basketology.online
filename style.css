@@ -23,14 +23,19 @@
 @font-face {
   font-family: 'Replica Pro';
   src: url('fonts/Replica/ReplicaPro-Regular.woff2') format('woff2'),
-    url('fonts/Replica/ReplicaPro-Regular.woff') format('woff');
-  font-weight: normal;
+    url('fonts/Replica/ReplicaPro-Regular.woff') format('woff'),
+    url('fonts/Replica/ReplicaPro-BoldItalic.woff2') format('woff2'),
+    url('fonts/Replica/ReplicaPro-BoldItalic.woff') format('woff'),
+    url('fonts/Replica/ReplicaPro-Bold.woff2') format('woff2'),
+    url('fonts/Replica/ReplicaPro-Bold.woff') format('woff');
+  /* font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: swap; */
 }
 
+/*
 @font-face {
-  font-family: 'Replica Pro';
+  font-family: 'Replica Pro Bold';
   src: url('fonts/Replica/ReplicaPro-BoldItalic.woff2') format('woff2'),
     url('fonts/Replica/ReplicaPro-BoldItalic.woff') format('woff');
   font-weight: bold;
@@ -45,8 +50,7 @@
   font-weight: bold;
   font-style: normal;
   font-display: swap;
-}
-
+} */
 /* BASICS */
 html, body {
   /* scroll-behavior: smooth; */
@@ -58,6 +62,7 @@ body {
   height: 100%; */
   text-decoration: none;
   background-color: var(--brown);
+  overflow-x: hidden;
 }
 
 /* BACKGROUND VIDEO */
@@ -65,20 +70,52 @@ body {
   position: fixed;
   right: 0;
   bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
+  opacity: 0.9;
+  /* min-width: 100%;
+  min-height: 100%; */
   justify-content: center;
   align-items: center;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   z-index: -100;
   /* -webkit-filter: blur(5px); */
 }
 
+.insta-link {
+  position: fixed;
+  bottom: 3vw;
+  background-color: white;
+  width: 3vw;
+  height: 3vw;
+  margin-left: 3%;
+  border-radius: 25px;
+  color: none;
+  z-index: 120;
+}
+
+.by-ada {
+  position: fixed;
+  bottom: 3vw;
+  margin-left: 8%;
+  z-index: 120;
+  color: var(--white);
+  font-size: 1.7em;
+  font-family: var(--text);
+  text-shadow: 0 0 7px var(--brown);
+}
+
+.by-ada-link{
+  text-decoration: none !important;
+  color:white;
+  cursor: pointer;
+  text-shadow: 0 0 7px var(--brown);
+
+}
+
 /* NAVIGATION */
+/* .navigation{
+    position: fixed;
+
+} */
 .nav-button {
   text-decoration: none !important;
   display: inline;
@@ -86,70 +123,100 @@ body {
   position: fixed;
   font-size: 2vw;
   font-family: var(--text);
-  color: lime;
+  color: white;
   width: 10%;
-  height: 5%;
-  float: right;
+  /* height: 5%; */
+  /* float: right; */
   margin: 2%;
   z-index: 100;
+  text-align: center;
 }
 
 .home-button {
-  text-decoration: none !important;
-  display: inline;
-  position: absolute;
   position: fixed;
-  font-size: 3vw;
+  text-decoration: none !important;
+  width: 40%;
+  /* height: 11%; */
+  float: left;
+  margin-left: 0%;
+  margin-top: 1%;
+  z-index: 100;
+  text-align: center;
+}
+
+.text-home-button {
+  font-size: 4vw;
   font-family: var(--siggy);
   color: white;
   -webkit-text-stroke: 1.5px white;
-  width: 10%;
-  height: 5%;
-  float: left;
-  margin-left: 3%;
-  margin-top: 1.5%;
-  z-index: 100;
   cursor: pointer;
-  text-shadow: 0 0 5px var(--brown);
+  text-shadow: 5px 5px 5px black, 5px 5px 5px black;
+}
+
+.subtitle-home-button {
+  padding-top: 10px;
+  margin-top: 0px;
+  color: var(--white);
+  font-size: 1em;
+  font-family: var(--text);
 }
 
 .about-button {
   right: 0;
-  margin-right: 15vw;
+  margin-right: 20vw;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
+
+
   transition: all 0.5s ease-in-out;
-  -webkit-filter: blur(3px);
+  -webkit-filter: blur(0px);
+  background-color: var(--brown);
+  padding-left: 1.4vw;
+  padding-right: 2vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  border-radius: 30px;
+
+
 }
 
 .podcast-button {
   right: 0;
-  margin-right: 3vw;
+  margin-right: 4vw;
+  /* margin-right: 3vw; */
+
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
+
   transition: all 0.5s ease-in-out;
-  -webkit-filter: blur(3px);
+
+  -webkit-filter: blur(0px);
+  text-align: center;
+  background-color: var(--brown);
+  padding-left: 1.4vw;
+  padding-right: 2vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  border-radius: 30px;
 }
 
 .text-about-button {
   text-decoration: none !important;
-  color: lime;
   font-weight: bold;
+  text-align: center;
   text-shadow: 0 0 7px var(--brown);
+
 }
 
 .text-podcast-button {
   text-decoration: none !important;
-  color: lime;
   font-weight: bold;
+  text-align: center;
   text-shadow: 0 0 7px var(--brown);
+
+
+
 }
+
+
 
 /* ABOUT-DESCRIPTION */
 .about-section {
@@ -160,33 +227,97 @@ body {
 
 .description {
   z-index: 10;
-  display: inline-block;
-  /* background-color: red; */
+  display: block;
   position: absolute;
   width: 50%;
   height: auto;
   margin-left: 25%;
-  margin-top: 10%;
+  margin-top: 15%;
   color: var(--white);
-  font-size: 1.5em;
+  font-size: 1.5vw;
   font-family: var(--text);
   text-align: left;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   padding-bottom: 15vw;
 }
 
+p {
+
+  padding-top: 50px;
+}
+
 .graph {
+  width: 200%;
+  margin-left: -53%;
   display: flex;
   justify-content: center;
 }
 
 .graph img {
-  width: 100vw;
+  width: 80%;
 }
+
+.image-description {
+  color: lime;
+  margin-top: 0px;
+  text-align: right;
+  font-size: 1.5vw;
+}
+
+.image-left {
+  float: left;
+  width: 60%;
+  margin-right: 0px;
+    margin-top: 2vw;
+}
+
+.image-right {
+  float: right;
+  width: 35%;
+  margin-left: 5px;
+    margin-top: 2vw;
+}
+
+.image {
+  margin-top: 2vw;
+  width: 100%;
+  height: auto;
+  /* margin-left: -53%; */
+  display: inline;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.image-1 img {
+  margin-top: 2vw;
+  margin-bottom:0vw;
+  width: 100%;
+}
+
+.image-2 img {
+  /* position: absolute; */
+  margin-bottom: 0vw;
+  width: 100%;
+}
+
+.image-3 img {
+  margin-bottom: 0vw;
+  width: 100%;
+}
+
+.image-4 img {
+  margin-bottom: 0vw;
+  margin-top: 2vw;
+  width: 100%;
+
+}
+
+.image-4 {
+  padding-bottom: 5vw;
+
+}
+
+
 
 /* ABOUT-FLOATING STORIES */
 #story {
@@ -264,16 +395,17 @@ body {
 } */
 .story-text {
   position: absolute;
-  top: 0; left: 0;
-    width: 30vw;
-    height: 40vw;
+  top: 0;
+  left: 0;
+  width: 30vw;
+  height: 40vw;
   padding: 20px;
   color: var(--brown);
   font-family: var(--text);
   /* padding: 20px; */
   /* width: 90%; */
   /* height: auto; */
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   transform-origin: center;
   transition: opacity 0.5s ease-in-out;
   box-sizing: border-box;
@@ -297,14 +429,17 @@ body {
 .story.opened {
   z-index: +1;
 }
+
 .story.opened .story-title {
   top: calc(-1.5em - 20vw);
   /* top: -8.5em; */
 }
+
 .story.opened .story-text {
-/*  opacity: 1; */
+  /*  opacity: 1; */
   pointer-events: all;
 }
+
 .story.opened .story-background {
   width: 30vw;
   height: 40vw;
@@ -315,31 +450,40 @@ body {
 /* PODCAST-ACCORDION */
 #dropdown-podcast {
   display: none;
-  margin-top: 10%;
+  margin-top: 15%;
   width: 50%;
   height: auto;
   margin-left: 25%;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
   backdrop-filter: blur(10px);
 }
 
 .podcast-buttons>.play-button,
 .podcast-buttons>.pause-button {
+  position: relative;
+  left: -10%;
+  top: 10px;
   display: none;
   fill: lime;
-  height: 50px;
-  width: 100%;
-  float: left;
+  height: 60px;
+  width: 10%;
+  /* float: left;
+  background-color: red;
+  margin-top: 2%;
+  margin-left: -3%;
+  margin-right: 2%; */
 }
 
 .elapsed-time {
   font-family: var(--text);
-  color: white;
+  color: lime;
+  /* background-color: blue; */
+  width: 10%;
+  float: left;
+  font-size: 1.4em;
+  margin-top: -0.8%;
+  text-align: center;
 }
 
 .podcast-buttons>.play-button.active,
@@ -349,10 +493,11 @@ body {
 
 .playhead-container {
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 20px;
   background: #fff;
   border-radius: 5px;
+  float: right;
   overflow: hidden;
 }
 
@@ -367,22 +512,50 @@ body {
 .accordion {
   align-items: center;
   margin-bottom: 1%;
-  border: 3px solid lime;
   border-radius: 25px;
-  transition: 0.4s;
+  transition: 1s;
   z-index: 90;
   padding: 20px;
+  box-shadow: inset 0px 0px 40px 40px var(--brown);
 }
 
 .accordion-title {
   color: var(--white);
-  font-size: 2.5em;
+  font-size: 3em;
   font-family: var(--text);
   font-weight: bold;
+  /* margin-top: 5%; */
+  margin-top: -44px;
+  padding-left: 10%;
+  margin-bottom: 40px;
 }
 
 .accordion-subtitle {
-  text-align: right;
+  position: relative;
+  width: 90%;
+  float: right;
+  vertical-align: bottom;
+  /* background-color: red; */
+}
+
+.more {
+  text-align: center;
+  width: 17%;
+  height: 110%;
+  color: var(--white);
+  font-size: 1.7em;
+  font-family: var(--text);
+  background-color: var(--brown);
+  border-radius: 25px;
+  position: absolute;
+  bottom: 0;
+  padding-top: 10px;
+  padding-left: -3px;
+}
+
+.guest-div {
+  float: right;
+  /* background-color: black; */
 }
 
 .guest {
@@ -390,22 +563,29 @@ body {
   font-size: 2em;
   font-family: var(--siggy);
   text-align: right;
+  float: right;
   -webkit-text-stroke: 1.5px lime;
+  vertical-align: bottom;
+  margin-left: 60px;
 }
 
 .with {
+  position: absolute;
+  bottom: 0;
   color: var(--white);
-  font-size: 1em;
+  font-size: 1.7em;
   font-family: var(--text);
   text-align: right;
-  margin-right: 5px;
+  /* background-color: pink; */
 }
 
 .accordion-content {
   margin-top: 1%;
   height: auto;
+  max-height: 0;
   width: 100%;
-  display: none;
+  overflow: hidden;
+  /* display: none; */
   color: var(--white);
   animation: display_transition .8s ease-in-out;
   /* -webkit-transition: all 0.5s ease-in-out;
@@ -413,6 +593,15 @@ body {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out; */
+  transition: max-height .8s;
+}
+
+.accordion-content:after {
+  clear: both;
+  float: none;
+  width: 100%;
+  content: '';
+  display: block;
 }
 
 @keyframes display_transition {
@@ -451,17 +640,18 @@ body {
 }
 
 .basket-drawing {
-  position: absolute;
-  display: block;
+  /* position: absolute;
+  display: block; */
 }
 
 .basket-drawing img {
-  width: 30%;
+  /* width: 30%; */
+  width: calc(100% - 20px);
 }
 
 .basket-drawing-description {
   color: lime;
-  margin-top: 0px;
+  margin-top: 5px;
 }
 
 .podcast-links {
@@ -519,57 +709,92 @@ body {
 }
 
 .podcast-links-container {
-  width: 40%;
+  /* width: 40%;
   position: absolute;
-  display: block;
+  display: block; */
 }
 
 .panel {
   padding: 0;
-  background-color: var(--brown);
-  display: none;
+  /* background-color: var(--brown); */
+  /* display: none; */
 }
 
 @media (max-width: 1400px) {
   #background-video {
     position: fixed;
     top: 0;
-    margin-left: 300PX;
+    /* margin-left: 300PX; */
     width: 100vw;
     height: 100vh;
-    transform: scale(2.5, 2.5);
-  }
-
-  .nav-button {
-    font-size: 4vw;
+    transform: scale(2.4, 2.4);
   }
 
   .home-button {
-    font-size: 5vw;
+    text-decoration: none !important;
+    width: 50%;
+    height: 11%;
+    float: left;
+    margin-left: 3%;
+    /* margin-top: 3%; */
+    z-index: 100;
+    text-align: center;
   }
 
-  .about-button {
-    margin-right: 30vw;
+  .text-home-button {
+    font-size: 6vw;
   }
 
-  .podcast-button {
-    margin-right: 13vw;
+  .subtitle-home-button {
+    font-size: 2vw;
+  }
+
+    .nav-button {
+      font-size: 3vw;
+      margin-top: 3vw;
+    }
+
+    .home-button {
+      font-size: 5vw;
+    }
+
+    .about-button {
+      margin-right: 22vw;
+    }
+
+    .podcast-button {
+      /* right: 0;
+      margin-right: 3vw; */
+    }
+
+  .by-ada {
+    font-size: 2vw;
+    padding-left: 10px;
+  }
+
+  .insta-link {
+    width:30px;
+    height:30px;
   }
 
   .description {
-    font-size: 1.7em;
-    width: 60%;
+    margin-top: 17%;
+    font-size: 2vw;
+    width: 70%;
     height: auto;
-    margin-left: 20%;
+    margin-left: 15%;
+    color: var(--white);
   }
 
   .basket-drawing img {
-    width: 40%;
+    /* width: 40%; */
   }
+
+
 
   #dropdown-podcast {
     display: none;
-    margin-top: 10%;
+    margin-top: 17%;
     width: 80%;
     height: auto;
     margin-left: 10%;
@@ -581,17 +806,156 @@ body {
     transition: all 0.5s ease-in-out;
     backdrop-filter: blur(10px);
   }
+
+  .playhead-container {
+    width: 87%;
+
+  }
+
+
+  .accordion-title {
+    color: var(--white);
+    font-size: 2.5em;
+    font-family: var(--text);
+    font-weight: bold;
+    /* margin-top: 5%; */
+    margin-top: -44px;
+    padding-left: 10%;
+    margin-bottom: 40px;
+  }
+
+  .accordion-subtitle {
+    position: relative;
+    width: 90%;
+    float: right;
+    vertical-align: bottom;
+    /* background-color: red; */
+  }
+
+  .more {
+    text-align: center;
+    width: 19%;
+    height: 90%;
+    color: var(--white);
+    font-size: 1em;
+    font-family: var(--text);
+    background-color: var(--brown);
+    border-radius: 25px;
+    position: absolute;
+    bottom: 0;
+    padding-top: 10px;
+    padding-left: -3px;
+  }
+
+  .guest-div {
+    float: right;
+    /* background-color: black; */
+  }
+
+  .guest {
+    color: lime;
+    font-size: 1.5em;
+    font-family: var(--siggy);
+    text-align: right;
+    float: right;
+    -webkit-text-stroke: 1.5px lime;
+    vertical-align: bottom;
+    margin-left: 40px;
+  }
+
+  .with {
+    position: absolute;
+    bottom: 0;
+    color: var(--white);
+    font-size: 1em;
+    font-family: var(--text);
+    text-align: right;
+    /* background-color: pink; */
+  }
+
 }
 
 @media only screen and (orientation: landscape) {
+  #background-video {
+    position: fixed;
+    top: 0;
+    /* margin-left: 300PX; */
+    width: 100vw;
+    height: 100vh;
+    transform: scale(1.4, 1.4);
+  }
+
+  .home-button {
+    text-decoration: none !important;
+    width: 40%;
+    height: 11%;
+    float: left;
+    margin-left: 3%;
+    /* margin-top: 1.5%; */
+    z-index: 100;
+    text-align: center;
+  }
+
+  .text-home-button {
+    font-size: 5vw;
+  }
+
+  .subtitle-home-button {
+    font-size: 2vw;
+  }
+
+  .by-ada {
+    font-size: 2vw;
+  }
+
+  .about-button {
+    /* margin-right: 25vw; */
+  }
+
+  .podcast-button {
+    /* margin-right: 6vw; */
+  }
+
+
+  .nav-background {
+    position: absolute;
+    height: 150%;
+    background-color: var(--brown);
+    -webkit-filter: blur(7px);
+    border-radius: 50px;
+    /* align-items: center; */
+    z-index: 10;
+  }
+
+  .about-button-background{
+    width:170%;
+    margin-left: -30%;
+    margin-top: -10px;
+
+  }
+
+  .podcast-button-background{
+    width:170%;
+    margin-left: -25%;
+    margin-top: -10px;
+
+  }
 
   #dropdown-podcast {
     display: none;
-    margin-top: 10%;
+    margin-top: 13%;
     width: 60%;
     height: auto;
     margin-left: 20%;
+  }
 
+  .description {
+    margin-top: 13%;
+    font-size: 2vw;
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    color: var(--white);
   }
 }
 
@@ -602,6 +966,42 @@ body {
     margin-left: 300px;
     width: 100vw;
     height: 100vh;
-    transform: scale(4, 4);
+    transform: scale(3.9, 3.9);
+  }
+
+  .home-button {
+    text-decoration: none !important;
+    width: 100vw;
+    height: auto;
+    margin-left: -2%;
+    /* margin-top: 1.5%; */
+    z-index: 100;
+    text-align: center;
+    /* background-color: red; */
+  }
+
+  .subtitle-home-button {
+    font-size: 4vw;
+  }
+
+  .by-ada {
+    font-size: 4vw;
+    padding-left: 6%;
+  }
+
+  .text-home-button {
+    font-size: 10vw;
+  }
+
+  #dropdown-podcast {
+    width: 96vw;
+    margin-left: 2vw;
+  }
+
+  .description {
+    font-size: 4.5vw;
+    width: 92vw;
+    margin-left: 2vw;
+    color: var(--white);
   }
 }
