@@ -159,6 +159,7 @@ body {
   color: var(--white);
   font-size: 1em;
   font-family: var(--text);
+  text-shadow: 0 0 7px var(--brown);
 }
 
 .about-button {
@@ -171,10 +172,11 @@ body {
   -webkit-filter: blur(0px);
   background-color: var(--brown);
   padding-left: 1.4vw;
-  padding-right: 2vw;
+  padding-right: 2.5vw;
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
   border-radius: 30px;
+  align-items: center;
 
 
 }
@@ -190,9 +192,10 @@ body {
 
   -webkit-filter: blur(0px);
   text-align: center;
+  align-items: center;
   background-color: var(--brown);
   padding-left: 1.4vw;
-  padding-right: 2vw;
+  padding-right: 3.5vw;
   padding-top: 0.5vw;
   padding-bottom: 0.5vw;
   border-radius: 30px;
@@ -239,6 +242,7 @@ body {
   text-align: left;
   transition: all 0.5s ease-in-out;
   padding-bottom: 15vw;
+  text-overflow: fade;
 }
 
 p {
@@ -247,14 +251,14 @@ p {
 }
 
 .graph {
-  width: 200%;
-  margin-left: -53%;
+  width: 100%;
+  /* margin-left: -53%; */
   display: flex;
   justify-content: center;
 }
 
 .graph img {
-  width: 80%;
+  width: 100%;
 }
 
 .image-description {
@@ -262,11 +266,13 @@ p {
   margin-top: 0px;
   text-align: right;
   font-size: 1.5vw;
+
 }
 
 .image-left {
   float: left;
   width: 60%;
+  height: 46vw;
   margin-right: 0px;
     margin-top: 2vw;
 }
@@ -274,6 +280,7 @@ p {
 .image-right {
   float: right;
   width: 35%;
+  height: 46vw;
   margin-left: 5px;
     margin-top: 2vw;
 }
@@ -309,6 +316,7 @@ p {
   margin-bottom: 0vw;
   margin-top: 2vw;
   width: 100%;
+
 
 }
 
@@ -458,7 +466,7 @@ p {
   transition: all 0.5s ease-in-out;
   backdrop-filter: blur(10px);
 }
-
+/* FIX */
 .podcast-buttons>.play-button,
 .podcast-buttons>.pause-button {
   position: relative;
@@ -727,7 +735,7 @@ p {
     /* margin-left: 300PX; */
     width: 100vw;
     height: 100vh;
-    transform: scale(2.4, 2.4);
+    transform: scale(3, 3);
   }
 
   .home-button {
@@ -746,7 +754,7 @@ p {
   }
 
   .subtitle-home-button {
-    font-size: 2vw;
+    font-size: 3vw;
   }
 
     .nav-button {
@@ -768,7 +776,7 @@ p {
     }
 
   .by-ada {
-    font-size: 2vw;
+    font-size: 3vw;
     padding-left: 10px;
   }
 
@@ -875,7 +883,9 @@ p {
 
 }
 
-@media only screen and (orientation: landscape) {
+@media
+  (max-width: 1400px)
+  and (orientation: landscape) {
   #background-video {
     position: fixed;
     top: 0;
@@ -884,6 +894,8 @@ p {
     height: 100vh;
     transform: scale(1.4, 1.4);
   }
+
+  /* FIX */
 
   .home-button {
     text-decoration: none !important;
@@ -901,11 +913,13 @@ p {
   }
 
   .subtitle-home-button {
-    font-size: 2vw;
+    font-size: 1vw;
+    color: red;
+    background-color: red;
   }
 
   .by-ada {
-    font-size: 2vw;
+    font-size: 1vw;
   }
 
   .about-button {
@@ -952,12 +966,20 @@ p {
   .description {
     margin-top: 13%;
     font-size: 2vw;
-    width: 80%;
+    width: 60%;
     height: auto;
-    margin-left: 10%;
+    margin-left: 20%;
     color: var(--white);
   }
 }
+/* FIX */
+.podcast-buttons>.play-button,
+.podcast-buttons>.pause-button {
+  left: 0%;
+}
+
+
+
 
 @media (max-width: 500px) {
   #background-video {
@@ -1003,5 +1025,11 @@ p {
     width: 92vw;
     margin-left: 2vw;
     color: var(--white);
+  }
+/* FIX */
+  .podcast-buttons>.play-button,
+  .podcast-buttons>.pause-button {
+    left: -10%;
+    height: 80px;
   }
 }
